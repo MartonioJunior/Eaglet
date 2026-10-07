@@ -6,7 +6,7 @@
 //
 
 import APIUtils
-import CasePaths
+public import CasePaths
 import Foundation
 public import URLRouting
 import SwiftURLRoutingHelpers

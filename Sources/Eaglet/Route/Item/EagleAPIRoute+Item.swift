@@ -5,7 +5,7 @@
 //  Created by Martônio Júnior on 14/04/25.
 //
 
-import CasePaths
+public import CasePaths
 import Foundation
 public import URLRouting
 
