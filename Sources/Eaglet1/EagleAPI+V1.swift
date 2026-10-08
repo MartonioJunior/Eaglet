@@ -33,8 +33,9 @@ public extension EagleAPI {
 
 // MARK: Self: EagleAPI.Client
 extension EagleAPI.V1: EagleAPI.Client {
+    // swiftlint:disable:next missing_docs
     public typealias Route = EagleRouteV1
-
+    // swiftlint:disable:next missing_docs
     public static var live: EntryPoint {
         .init(#staticURL("http://localhost:41595/api/"))
     }

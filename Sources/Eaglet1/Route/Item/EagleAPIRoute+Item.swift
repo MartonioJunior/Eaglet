@@ -39,7 +39,9 @@ public extension EagleRouteV1 {
         case setCustomThumbnail(SetCustomThumbnail)
         /// `POST` Modify data of specified fields of the item. 
         case update(UpdateItem)
-
+        /// `GET` Get the list of folders of the current library.
+        /// 
+        /// Same as using `.list(.init())`.
         public static var listAll: Self { .list(.init()) }
     }
 }

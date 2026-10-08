@@ -5,12 +5,19 @@
 //  Created by Martônio Júnior on 14/04/25.
 //
 
+/// Data structure with the necessary information to add an item in an Eagle Library from an URL.
 public struct AddPathItem {
+    /// Path of the local file.
     var path: String
+    /// Name of the item to be added.
     var name: String
+    /// Address of the source of the item.
     var website: String?
+    /// Annotation for the item.
     var annotation: String?
+    /// Tags for the item.
     var tags: [String]?
+    /// If this parameter is defined, the item will be added to the corresponding folder.
     var folderID: EagleFolder.ID?
 }
 

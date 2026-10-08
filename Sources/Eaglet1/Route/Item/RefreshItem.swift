@@ -5,7 +5,9 @@
 //  Created by Martônio Júnior on 16/04/25.
 //
 
+/// Data structure with the necessary information to refresh an item in an Eagle Library.
 public struct RefreshItem {
+    /// ID of the item to be refreshed.
     var id: String
 }
 
