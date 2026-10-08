@@ -5,6 +5,7 @@
 //  Created by Martônio Júnior on 14/04/25.
 //
 
+public import Common
 public import CasePaths
 import Foundation
 public import URLRouting
@@ -25,9 +26,10 @@ public extension EagleAPIRoute {
     }
 }
 
-// MARK: Router
-public extension EagleAPIRoute.Item {
-    static var router: some Router<EagleAPIRoute.Item> {
+// MARK: Self: EagleAPI.Routable
+extension EagleAPIRoute.Item: EagleAPI.Routable {
+    // swiftlint:disable:next missing_docs
+    public static var router: some Router<EagleAPIRoute.Item> {
         OneOf {
             Route(.case(\.add)) {
                 Add.router
@@ -120,8 +122,9 @@ public extension EagleAPIRoute.Item {
 
 extension EagleAPIRoute.Item.Add: Sendable {}
 
-public extension EagleAPIRoute.Item.Add {
-    static var router: some Router<EagleAPIRoute.Item.Add> {
+extension EagleAPIRoute.Item.Add: EagleAPI.Routable {
+    // swiftlint:disable:next missing_docs
+    public static var router: some Router<EagleAPIRoute.Item.Add> {
         OneOf {
             Route(.case(\.one)) {
                 ItemType.router
@@ -156,8 +159,9 @@ public extension EagleAPIRoute.Item.Add {
 
 extension EagleAPIRoute.Item.Add.ItemType: Sendable {}
 
-public extension EagleAPIRoute.Item.Add.ItemType {
-    static var router: some Router<EagleAPIRoute.Item.Add.ItemType> {
+extension EagleAPIRoute.Item.Add.ItemType: EagleAPI.Routable {
+    // swiftlint:disable:next missing_docs
+    public static var router: some Router<EagleAPIRoute.Item.Add.ItemType> {
         OneOf {
             Route(.case(\.url)) {
                 Method.post
@@ -185,8 +189,9 @@ public extension EagleAPIRoute.Item {
 
 extension EagleAPIRoute.Item.Refresh: Sendable {}
 
-public extension EagleAPIRoute.Item.Refresh {
-    static var router: some Router<EagleAPIRoute.Item.Refresh> {
+extension EagleAPIRoute.Item.Refresh: EagleAPI.Routable {
+    // swiftlint:disable:next missing_docs
+    public static var router: some Router<EagleAPIRoute.Item.Refresh> {
         OneOf {
             Route(.case(\.palette)) {
                 Method.post

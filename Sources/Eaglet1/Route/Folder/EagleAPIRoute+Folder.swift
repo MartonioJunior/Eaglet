@@ -6,6 +6,7 @@
 //
 
 public import CasePaths
+public import Common
 import Foundation
 public import Parsing
 public import URLRouting
@@ -31,9 +32,10 @@ public extension EagleAPIRoute.Folder {
 
 extension EagleAPIRoute.Folder.ListOptions: Sendable {}
 
-// MARK: Router
-public extension EagleAPIRoute.Folder {
-    static var router: some Router<EagleAPIRoute.Folder> {
+// MARK: Self: EagleAPI.Routable
+extension EagleAPIRoute.Folder: EagleAPI.Routable {
+    // swiftlint:disable:next missing_docs
+    public static var router: some Router<EagleAPIRoute.Folder> {
         OneOf {
             Route(.case(\.create)) {
                 Method.post

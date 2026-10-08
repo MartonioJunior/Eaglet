@@ -19,9 +19,10 @@ public extension EagleAPIRoute {
     }
 }
 
-// MARK: Router
-public extension EagleAPIRoute.Library {
-    static var router: some Router<EagleAPIRoute.Library> {
+// MARK: Self: EagleAPI.Routable
+extension EagleAPIRoute.Library: EagleAPI.Routable {
+    // swiftlint:disable:next missing_docs
+    public static var router: some Router<EagleAPIRoute.Library> {
         OneOf {
             Route(.case(\.info)) {
                 Path { "info" }
