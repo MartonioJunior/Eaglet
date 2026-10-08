@@ -62,6 +62,11 @@ let targets: [Target] = [
         name: "Eaglet",
         dependencies: [casePaths, communication, urlRouting],
         swiftSettings: .upcomingFeatures
+    ),
+    .target(
+        name: "Eaglet2",
+        dependencies: [casePaths, communication, urlRouting],
+        swiftSettings: .upcomingFeatures
     )
 ]
 
@@ -70,12 +75,9 @@ let testTargets: [Target] = targets.map {
 }
 
 // MARK: - Products
-let products: [Product] = [
-    .library(
-        name: "Eaglet",
-        targets: ["Eaglet"]
-    )
-]
+let products: [Product] = targets.map {
+    .library(name: $0.name, targets: [$0.name])
+}
 
 // MARK: - Supported Platforms
 let platforms: [SupportedPlatform] = [
