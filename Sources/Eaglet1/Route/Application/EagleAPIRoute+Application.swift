@@ -8,8 +8,12 @@
 public import CasePaths
 
 public extension EagleRouteV1 {
+    /// Route related to the Eagle application itself.
     @CasePathable
     enum Application {
+        /// `Get` Obtains detailed information on the Eagle App currently running (version, platform, etc.).
+        /// 
+        /// In most cases, this could be used to determine whether certain functions are available on the user's device.
         case info
     }
 }

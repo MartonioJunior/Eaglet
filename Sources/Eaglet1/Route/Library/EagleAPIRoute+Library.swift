@@ -11,11 +11,18 @@ import Foundation
 public import URLRouting
 
 public extension EagleRouteV1 {
+    /// Route containing operations for an Eagle library.
     @CasePathable
     enum Library {
+        /// `GET` Get detailed information of the library currently running.
+        /// 
+        /// The function can be used to obtain details such as All Folders, All Smart Folders, All Tag Groups, Quick Access and etc.
         case info
+        /// `GET` Get the list of libraries recently opened by the Application. 
         case history
+        /// `POST` Switch the library currently opened by Eagle.
         case `switch`(EagleLibrary.Path)
+        /// `GET` Obtain the icon of the specified Library.
         case icon(EagleLibrary.Path)
     }
 }

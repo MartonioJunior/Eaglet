@@ -12,6 +12,15 @@ import Foundation
 import URLRouting
 
 public extension EagleAPI {
+    /// Legacy version of Eagle's Web API.
+    /// 
+    /// The Eagle API server will start up when Eagle App is opened,
+    /// hence you'd have to open Eagle App first to gain access to all function of Eagle API.
+    /// 
+    /// All API server will start-up upon opening Eagle App, the default listening port is 41595,
+    /// i.e. http://localhost:41595/ . Results returned will be in JSON format.
+    /// 
+    /// Eagle 1.11 Build21 (Released on 2020/06/17) or later is required to gain access to this version of the API.
     enum V1 {
         public static func decodedRequest<T: Decodable>(
             _ route: EagleRouteV1,

@@ -12,20 +12,30 @@ public import Parsing
 public import URLRouting
 
 public extension EagleRouteV1 {
+    /// Route that performs a folder operation.
     @CasePathable
     enum Folder {
+        /// `POST` Create a folder.
+        /// 
+        /// The created folder will be put at the bottom of the folder list of the current library.
         case create(CreateFolder)
+        /// `POST` Rename the specified folder.
         case rename(RenameFolder)
+        /// `POST` Update the specified folder.
         case update(UpdateFolder)
+        /// `GET` Obtains a list of folders of the current library.
         case list(ListOptions)
     }
 }
 
 // MARK: EagleAPIRoute.Folder.ListOptions
 public extension EagleRouteV1.Folder {
+    /// Route that defines which folders should be listed.
     @CasePathable
     enum ListOptions {
+        /// Gets all folders from the current library.
         case all
+        /// Gets only the most recently used folders by the user.
         case recentlyUsed
     }
 }

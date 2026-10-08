@@ -12,11 +12,16 @@ import Foundation
 import SwiftURLRoutingHelpers
 public import URLRouting
 
+/// Route describing Eagle's v1 API routes.
 @CasePathable
 public enum EagleRouteV1 {
+    /// Performs operations related to the application.
     case application(Application = .info)
+    /// Performs operations related to folders inside a library.
     case folder(Folder)
+    /// Performs operations related to items inside a library.
     case item(Item)
+    /// Performs operations related to Eagle libraries.
     case library(Library)
 }
 
