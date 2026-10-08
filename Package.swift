@@ -59,18 +59,22 @@ let dependencies: [Package.Dependency] = [
 // MARK: - Targets
 let targets: [Target] = [
     .target(
+        name: "Common",
+        swiftSettings: .allFeatures
+    ),
+    .target(
         name: "Eaglet",
         dependencies: ["Eaglet2"],
         swiftSettings: .allFeatures
     ),
     .target(
         name: "Eaglet1",
-        dependencies: [casePaths, communication, urlRouting],
+        dependencies: ["Common", casePaths, communication, urlRouting],
         swiftSettings: .allFeatures
     ),
     .target(
         name: "Eaglet2",
-        dependencies: [casePaths, communication, urlRouting],
+        dependencies: ["Common", casePaths, communication, urlRouting],
         swiftSettings: .allFeatures
     )
 ]
@@ -80,8 +84,10 @@ let testTargets: [Target] = targets.map {
 }
 
 // MARK: - Products
-let products: [Product] = targets.map {
-    .library(name: $0.name, targets: [$0.name])
+let products: [Product] = targets.compactMap {
+    guard $0.name != "Common" else { return nil }
+
+    return .library(name: $0.name, targets: [$0.name])
 }
 
 // MARK: - Supported Platforms
