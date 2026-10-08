@@ -55,6 +55,6 @@ extension EagleAPIRoute: Sendable {}
 // MARK: URLRoutingClient (EX)
 public extension URLRoutingClient where Route == EagleAPIRoute {
     static var eagleAPI: Self {
-        .live(router: EagleAPIRoute.router.entryPoint(EagleAPI.live))
+        .live(router: EagleAPIRoute.router.entryPoint(EagleAPI.V1.live))
     }
 }
