@@ -61,17 +61,17 @@ let targets: [Target] = [
     .target(
         name: "Eaglet",
         dependencies: ["Eaglet2"],
-        swiftSettings: .upcomingFeatures
+        swiftSettings: .allFeatures
     ),
     .target(
         name: "Eaglet1",
         dependencies: [casePaths, communication, urlRouting],
-        swiftSettings: .upcomingFeatures
+        swiftSettings: .allFeatures
     ),
     .target(
         name: "Eaglet2",
         dependencies: [casePaths, communication, urlRouting],
-        swiftSettings: .upcomingFeatures
+        swiftSettings: .allFeatures
     )
 ]
 
