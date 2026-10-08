@@ -65,7 +65,7 @@ let targets: [Target] = [
     ),
     .target(
         name: "Eaglet",
-        dependencies: ["Eaglet2"],
+        dependencies: ["Eaglet1", "Eaglet2"],
         swiftSettings: .allFeatures
     ),
     .target(
