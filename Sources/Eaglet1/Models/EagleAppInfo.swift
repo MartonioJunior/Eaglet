@@ -5,16 +5,27 @@
 //  Created by Martônio Júnior on 14/04/25.
 //
 
+/// Data structure containing all of the information about the running instance of the Eagle app.
+/// 
+/// This version of the API also provides all of the preferences defined by the user.
 public struct EagleAppInfo: Codable {
+    /// Type representing the operating system Eagle is running on.
     public typealias Platform = String
+    /// Type representing the version of Eagle running.
     public typealias Version = String
-
     // MARK: Variables
+    /// Eagle version number.
     public let version: Version
+    /// Pre-release version identifier.
+    /// 
+    /// Returns `nil` for stable releases.
     public let prereleaseVersion: String?
+    /// Build version identifier.
     public let buildVersion: String
     public let showCollectModal: Bool
+    /// Operating system.
     public let platform: Platform
+    /// Preferences of the app.
     public let preferences: Preferences
 }
 
