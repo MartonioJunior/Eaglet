@@ -59,6 +59,11 @@ let dependencies: [Package.Dependency] = [
 // MARK: - Targets
 let targets: [Target] = [
     .target(
+        name: "Eaglet",
+        dependencies: ["Eaglet2"],
+        swiftSettings: .upcomingFeatures
+    ),
+    .target(
         name: "Eaglet1",
         dependencies: [casePaths, communication, urlRouting],
         swiftSettings: .upcomingFeatures
