@@ -5,35 +5,28 @@
 //  Created by Martônio Júnior on 17/04/25.
 //
 
-import APIUtils
+public import APIUtils
 public import Common
 import CommunicationMacros
 import Foundation
-public import URLRouting
+import URLRouting
 
 public extension EagleAPI {
     enum V1 {
-        static var live: EntryPoint {
-            .init(#staticURL("http://localhost:41595/api/"))
-        }
-
         public static func decodedRequest<T: Decodable>(
             _ route: EagleAPIRoute,
-            as _: T.Type = T.self,
-            client: sending URLRoutingClient<EagleAPIRoute> = .eagleAPI
+            as type: T.Type = T.self,
         ) async throws -> T {
-            try await client.decodedResponse(
-                for: route,
-                as: Response<T>.self
-            ).value.data
+            try await decodedRequest(route, as: type, client: .eagleAPI)
         }
     }
 }
 
-// MARK: EagleAPI.Response
-public extension EagleAPI.V1 {
-    struct Response<T: Decodable>: Decodable {
-        public let status: String
-        public let data: T
+// MARK: Self: EagleAPI.Client
+extension EagleAPI.V1: EagleAPI.Client {
+    public typealias Route = EagleAPIRoute
+
+    public static var live: EntryPoint {
+        .init(#staticURL("http://localhost:41595/api/"))
     }
 }
