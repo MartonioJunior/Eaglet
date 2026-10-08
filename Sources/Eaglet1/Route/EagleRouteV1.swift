@@ -1,6 +1,6 @@
 //
-//  EagleAPIRoute.swift
-//  SwiftKnowledge
+//  EagleRouteV1.swift
+//  Eaglet
 //
 //  Created by Martônio Júnior on 11/04/25.
 //
@@ -13,7 +13,7 @@ import SwiftURLRoutingHelpers
 public import URLRouting
 
 @CasePathable
-public enum EagleAPIRoute {
+public enum EagleRouteV1 {
     case application(Application = .info)
     case folder(Folder)
     case item(Item)
@@ -21,9 +21,9 @@ public enum EagleAPIRoute {
 }
 
 // MARK: Self: EagleAPI.Routable
-extension EagleAPIRoute: EagleAPI.Routable {
+extension EagleRouteV1: EagleAPI.Routable {
     // swiftlint:disable:next missing_docs
-    public static var router: some Router<EagleAPIRoute> {
+    public static var router: some Router<EagleRouteV1> {
         OneOf {
             Route(.case(\.application.info)) {
                 Path { "application"; "info" }
@@ -48,4 +48,4 @@ extension EagleAPIRoute: EagleAPI.Routable {
 }
 
 // MARK: Self: Sendable
-extension EagleAPIRoute: Sendable {}
+extension EagleRouteV1: Sendable {}

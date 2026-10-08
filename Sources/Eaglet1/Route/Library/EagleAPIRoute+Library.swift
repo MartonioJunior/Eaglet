@@ -6,10 +6,11 @@
 //
 
 public import CasePaths
+public import Common
 import Foundation
 public import URLRouting
 
-public extension EagleAPIRoute {
+public extension EagleRouteV1 {
     @CasePathable
     enum Library {
         case info
@@ -20,9 +21,9 @@ public extension EagleAPIRoute {
 }
 
 // MARK: Self: EagleAPI.Routable
-extension EagleAPIRoute.Library: EagleAPI.Routable {
+extension EagleRouteV1.Library: EagleAPI.Routable {
     // swiftlint:disable:next missing_docs
-    public static var router: some Router<EagleAPIRoute.Library> {
+    public static var router: some Router<EagleRouteV1.Library> {
         OneOf {
             Route(.case(\.info)) {
                 Path { "info" }
@@ -49,4 +50,4 @@ extension EagleAPIRoute.Library: EagleAPI.Routable {
 }
 
 // MARK: Self: Sendable
-extension EagleAPIRoute.Library: Sendable {}
+extension EagleRouteV1.Library: Sendable {}

@@ -7,7 +7,7 @@
 
 public import CasePaths
 
-public extension EagleAPIRoute {
+public extension EagleRouteV1 {
     @CasePathable
     enum Application {
         case info
@@ -15,4 +15,4 @@ public extension EagleAPIRoute {
 }
 
 // MARK: Self: Sendable
-extension EagleAPIRoute.Application: Sendable {}
+extension EagleRouteV1.Application: Sendable {}

@@ -14,7 +14,7 @@ import URLRouting
 public extension EagleAPI {
     enum V1 {
         public static func decodedRequest<T: Decodable>(
-            _ route: EagleAPIRoute,
+            _ route: EagleRouteV1,
             as type: T.Type = T.self,
         ) async throws -> T {
             try await decodedRequest(route, as: type, client: .eagle(Self.self))
@@ -24,7 +24,7 @@ public extension EagleAPI {
 
 // MARK: Self: EagleAPI.Client
 extension EagleAPI.V1: EagleAPI.Client {
-    public typealias Route = EagleAPIRoute
+    public typealias Route = EagleRouteV1
 
     public static var live: EntryPoint {
         .init(#staticURL("http://localhost:41595/api/"))

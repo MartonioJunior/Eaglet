@@ -11,7 +11,7 @@ import Foundation
 public import Parsing
 public import URLRouting
 
-public extension EagleAPIRoute {
+public extension EagleRouteV1 {
     @CasePathable
     enum Folder {
         case create(CreateFolder)
@@ -22,7 +22,7 @@ public extension EagleAPIRoute {
 }
 
 // MARK: EagleAPIRoute.Folder.ListOptions
-public extension EagleAPIRoute.Folder {
+public extension EagleRouteV1.Folder {
     @CasePathable
     enum ListOptions {
         case all
@@ -30,12 +30,12 @@ public extension EagleAPIRoute.Folder {
     }
 }
 
-extension EagleAPIRoute.Folder.ListOptions: Sendable {}
+extension EagleRouteV1.Folder.ListOptions: Sendable {}
 
 // MARK: Self: EagleAPI.Routable
-extension EagleAPIRoute.Folder: EagleAPI.Routable {
+extension EagleRouteV1.Folder: EagleAPI.Routable {
     // swiftlint:disable:next missing_docs
-    public static var router: some Router<EagleAPIRoute.Folder> {
+    public static var router: some Router<EagleRouteV1.Folder> {
         OneOf {
             Route(.case(\.create)) {
                 Method.post
@@ -67,4 +67,4 @@ extension EagleAPIRoute.Folder: EagleAPI.Routable {
 }
 
 // MARK: Self: Sendable
-extension EagleAPIRoute.Folder: Sendable {}
+extension EagleRouteV1.Folder: Sendable {}

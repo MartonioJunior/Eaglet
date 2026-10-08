@@ -10,7 +10,7 @@ public import CasePaths
 import Foundation
 public import URLRouting
 
-public extension EagleAPIRoute {
+public extension EagleRouteV1 {
     @CasePathable
     enum Item: Equatable {
         case add(Add)
@@ -27,9 +27,9 @@ public extension EagleAPIRoute {
 }
 
 // MARK: Self: EagleAPI.Routable
-extension EagleAPIRoute.Item: EagleAPI.Routable {
+extension EagleRouteV1.Item: EagleAPI.Routable {
     // swiftlint:disable:next missing_docs
-    public static var router: some Router<EagleAPIRoute.Item> {
+    public static var router: some Router<EagleRouteV1.Item> {
         OneOf {
             Route(.case(\.add)) {
                 Add.router
@@ -111,7 +111,7 @@ extension EagleAPIRoute.Item: EagleAPI.Routable {
 }
 
 // MARK: EagleAPIRoute.Item.Add
-public extension EagleAPIRoute.Item {
+public extension EagleRouteV1.Item {
     @CasePathable
     enum Add: Equatable {
         case one(ItemType)
@@ -120,11 +120,11 @@ public extension EagleAPIRoute.Item {
     }
 }
 
-extension EagleAPIRoute.Item.Add: Sendable {}
+extension EagleRouteV1.Item.Add: Sendable {}
 
-extension EagleAPIRoute.Item.Add: EagleAPI.Routable {
+extension EagleRouteV1.Item.Add: EagleAPI.Routable {
     // swiftlint:disable:next missing_docs
-    public static var router: some Router<EagleAPIRoute.Item.Add> {
+    public static var router: some Router<EagleRouteV1.Item.Add> {
         OneOf {
             Route(.case(\.one)) {
                 ItemType.router
@@ -149,7 +149,7 @@ extension EagleAPIRoute.Item.Add: EagleAPI.Routable {
 }
 
 // MARK: EagleAPIRoute.Item.Add.ItemType
-public extension EagleAPIRoute.Item.Add {
+public extension EagleRouteV1.Item.Add {
     @CasePathable
     enum ItemType: Codable, Equatable {
         case url(AddURLItem)
@@ -157,11 +157,11 @@ public extension EagleAPIRoute.Item.Add {
     }
 }
 
-extension EagleAPIRoute.Item.Add.ItemType: Sendable {}
+extension EagleRouteV1.Item.Add.ItemType: Sendable {}
 
-extension EagleAPIRoute.Item.Add.ItemType: EagleAPI.Routable {
+extension EagleRouteV1.Item.Add.ItemType: EagleAPI.Routable {
     // swiftlint:disable:next missing_docs
-    public static var router: some Router<EagleAPIRoute.Item.Add.ItemType> {
+    public static var router: some Router<EagleRouteV1.Item.Add.ItemType> {
         OneOf {
             Route(.case(\.url)) {
                 Method.post
@@ -179,7 +179,7 @@ extension EagleAPIRoute.Item.Add.ItemType: EagleAPI.Routable {
 }
 
 // MARK: EagleAPIRoute.Item.Refresh
-public extension EagleAPIRoute.Item {
+public extension EagleRouteV1.Item {
     @CasePathable
     enum Refresh: Equatable {
         case palette(RefreshItem)
@@ -187,11 +187,11 @@ public extension EagleAPIRoute.Item {
     }
 }
 
-extension EagleAPIRoute.Item.Refresh: Sendable {}
+extension EagleRouteV1.Item.Refresh: Sendable {}
 
-extension EagleAPIRoute.Item.Refresh: EagleAPI.Routable {
+extension EagleRouteV1.Item.Refresh: EagleAPI.Routable {
     // swiftlint:disable:next missing_docs
-    public static var router: some Router<EagleAPIRoute.Item.Refresh> {
+    public static var router: some Router<EagleRouteV1.Item.Refresh> {
         OneOf {
             Route(.case(\.palette)) {
                 Method.post
@@ -209,4 +209,4 @@ extension EagleAPIRoute.Item.Refresh: EagleAPI.Routable {
 }
 
 // MARK: Self: Sendable
-extension EagleAPIRoute.Item: Sendable {}
+extension EagleRouteV1.Item: Sendable {}

@@ -6,7 +6,7 @@
 //
 
 public struct AddManyItems {
-    var items: [EagleAPIRoute.Item.Add.ItemType]
+    var items: [EagleRouteV1.Item.Add.ItemType]
     var folderID: EagleFolder.ID?
 }
 
