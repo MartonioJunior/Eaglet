@@ -17,7 +17,7 @@ public extension EagleAPI {
             _ route: EagleAPIRoute,
             as type: T.Type = T.self,
         ) async throws -> T {
-            try await decodedRequest(route, as: type, client: .eagleAPI)
+            try await decodedRequest(route, as: type, client: .eagle(Self.self))
         }
     }
 }
