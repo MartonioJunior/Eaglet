@@ -78,3 +78,26 @@ extension EagleRouteV1.Folder: EagleAPI.Routable {
 
 // MARK: Self: Sendable
 extension EagleRouteV1.Folder: Sendable {}
+
+// MARK: URLRoutingClient (EX)
+public extension URLRoutingClient where Route == EagleAPI.V1.Route {
+    @concurrent
+    func createFolder(_ draft: CreateFolder) async throws -> CreateFolder.Output {
+        try await decodedResponse(for: .folder(.create(draft)), as: CreateFolder.Output.self).value
+    }
+
+    @concurrent
+    func listFolders(_ options: EagleRouteV1.Folder.ListOptions = .all) async throws -> RenameFolder.Output {
+        try await decodedResponse(for: .folder(.list(options)), as: RenameFolder.Output.self).value
+    }
+
+    @concurrent
+    func renameFolder(_ rename: RenameFolder) async throws -> RenameFolder.Output {
+        try await decodedResponse(for: .folder(.rename(rename)), as: RenameFolder.Output.self).value
+    }
+
+    @concurrent
+    func updateFolder(_ update: UpdateFolder) async throws -> UpdateFolder.Output {
+        try await decodedResponse(for: .folder(.update(update)), as: UpdateFolder.Output.self).value
+    }
+}
