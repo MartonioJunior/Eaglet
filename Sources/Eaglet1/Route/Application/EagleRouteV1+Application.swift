@@ -6,6 +6,8 @@
 //
 
 public import CasePaths
+public import Common
+public import URLRouting
 
 public extension EagleRouteV1 {
     /// Route related to the Eagle application itself.
@@ -20,3 +22,11 @@ public extension EagleRouteV1 {
 
 // MARK: Self: Sendable
 extension EagleRouteV1.Application: Sendable {}
+
+// MARK: URLRoutingClient (EX)
+public extension URLRoutingClient where Route == EagleAPI.V1.Route {
+    @concurrent
+    func getAppInfo() async throws -> EagleAppInfo {
+        try await decodedResponse(for: .application(.info), as: EagleAppInfo.self).value
+    }
+}
