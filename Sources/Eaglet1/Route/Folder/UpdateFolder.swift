@@ -14,7 +14,30 @@ public struct UpdateFolder: Codable {
     /// New description of the folder.
     var newDescription: String?
     /// New color for the folder.
-    var newColor: EagleFolder.Color?
+    var newColor: EagleColor?
+}
+
+// MARK: Self.Output
+public extension UpdateFolder {
+    /// Output of a rename folder operation.
+    struct Output: Codable, Equatable, Sendable {
+        var id: String
+        var name: String
+        var description: String
+        var images: [EagleItem.ID]
+        var folders: [EagleFolder.ID]
+        var modificationTime: UInt
+        var imagesMappings: [String: String] // [String: Any]
+        var tags: [EagleTag]
+        var children: [EagleFolder.ID]
+        var isExpand: Bool
+        var size: Int
+        var vstype: String
+        var styles: EagleStyle
+        var isVisible: Bool
+        var hashKey: String
+        var editable: Bool
+    }
 }
 
 // MARK: Self: Sendable

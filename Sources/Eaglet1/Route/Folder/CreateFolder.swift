@@ -13,6 +13,22 @@ public struct CreateFolder: Codable {
     var parent: EagleFolder.ID?
 }
 
+// MARK: Self.Output
+public extension CreateFolder {
+    /// Output response from the create folder operation.
+    struct Output: Codable, Equatable, Sendable {
+        var id: String
+        var name: String
+        var images: [EagleItem.ID]
+        var folders: [EagleFolder.ID]
+        var modificationTime: UInt
+        var imagesMappings: [String: String] // [String: Any]
+        var tags: [EagleTag]
+        var children: [EagleFolder.ID]
+        var isExpand: Bool
+    }
+}
+
 // MARK: DotSyntax
 public extension CreateFolder {
     /// Defines a create folder operation.
