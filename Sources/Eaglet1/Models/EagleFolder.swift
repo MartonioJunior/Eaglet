@@ -44,12 +44,12 @@ public extension EagleFolder {
         let id: String
         let name: String
         let images: [EagleItem.ID]
-        let folders: [EagleFolder]
+        let folders: [Self]
         let modificationTime: Int
         let editable: Bool
         let imagesMappings: [String: String]
         let tags: [EagleTag]
-        let children: [EagleFolder]
+        let children: [Self]
         let isExpand: Bool
         let parent: String
         let icon: String

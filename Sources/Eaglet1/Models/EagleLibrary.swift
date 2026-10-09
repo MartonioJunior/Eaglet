@@ -46,11 +46,11 @@ public extension EagleLibrary {
         /// Last modification timestamp.
         var modificationTime: UInt
         /// Tag names.
-        var tags: [EagleFolder.Tag]
+        var tags: [EagleTag]
         /// Icon associated with this folder.
         var icon: String
         /// Tint color for the item.
-        var iconColor: EagleFolder.Color
+        var iconColor: EagleColor
         /// Password of the item.
         var password: String
         /// Password tips for the password-locked item.
@@ -78,6 +78,6 @@ public extension EagleLibrary {
         /// Name of the tag group.
         var name: String
         /// Tags associated with this tag group.
-        var tags: [EagleFolder.Tag]
+        var tags: [EagleTag]
     }
 }
