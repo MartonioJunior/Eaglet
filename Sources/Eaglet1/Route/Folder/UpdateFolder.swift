@@ -40,8 +40,36 @@ public extension UpdateFolder {
     }
 }
 
+extension UpdateFolder.Output {
+    enum CodingKeys: String, CodingKey {
+        case id // swiftlint:disable:this explicit_enum_raw_value
+        case name // swiftlint:disable:this explicit_enum_raw_value
+        case description // swiftlint:disable:this explicit_enum_raw_value
+        case images // swiftlint:disable:this explicit_enum_raw_value
+        case folders // swiftlint:disable:this explicit_enum_raw_value
+        case modificationTime // swiftlint:disable:this explicit_enum_raw_value
+        case imagesMappings // swiftlint:disable:this explicit_enum_raw_value
+        case tags // swiftlint:disable:this explicit_enum_raw_value
+        case children // swiftlint:disable:this explicit_enum_raw_value
+        case isExpand // swiftlint:disable:this explicit_enum_raw_value
+        case size // swiftlint:disable:this explicit_enum_raw_value
+        case vstype // swiftlint:disable:this explicit_enum_raw_value
+        case styles // swiftlint:disable:this explicit_enum_raw_value
+        case isVisible // swiftlint:disable:this explicit_enum_raw_value
+        case hashKey = "$$hashKey"
+        case editable // swiftlint:disable:this explicit_enum_raw_value
+    }
+}
+
 // MARK: Self: Codable
-extension UpdateFolder: Codable {}
+extension UpdateFolder: Codable {
+    enum CodingKeys: String, CodingKey {
+        case id = "folderId"
+        case newName // swiftlint:disable:this explicit_enum_raw_value
+        case newDescription // swiftlint:disable:this explicit_enum_raw_value
+        case newColor // swiftlint:disable:this explicit_enum_raw_value
+    }
+}
 
 // MARK: Self: Equatable
 extension UpdateFolder: Equatable {}
