@@ -45,7 +45,7 @@ public extension EagleFolder {
         let name: String
         let images: [EagleItem.ID]
         let folders: [Self]
-        let modificationTime: Int
+        let modificationTime: UInt
         let editable: Bool
         let imagesMappings: [String: String]
         let tags: [EagleTag]
