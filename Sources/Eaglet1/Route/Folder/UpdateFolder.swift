@@ -6,7 +6,7 @@
 //
 
 /// Data structure containing the necessary information to update info about a folder in an Eagle Library.
-public struct UpdateFolder: Codable {
+public struct UpdateFolder {
     /// Folder's ID.
     var id: EagleFolder.ID
     /// New name of the folder.
@@ -39,6 +39,12 @@ public extension UpdateFolder {
         var editable: Bool
     }
 }
+
+// MARK: Self: Codable
+extension UpdateFolder: Codable {}
+
+// MARK: Self: Equatable
+extension UpdateFolder: Equatable {}
 
 // MARK: Self: Sendable
 extension UpdateFolder: Sendable {}

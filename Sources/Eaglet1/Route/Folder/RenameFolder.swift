@@ -6,7 +6,7 @@
 //
 
 /// Data structure containing the necessary information to rename a folder in an Eagle Library.
-public struct RenameFolder: Codable {
+public struct RenameFolder {
     /// Folder's ID.
     var id: EagleFolder.ID
     /// New name of the folder.
@@ -58,6 +58,12 @@ extension RenameFolder.Output {
         case pinyin // swiftlint:disable:this explicit_enum_raw_value
     }
 }
+
+// MARK: Self: Codable
+extension RenameFolder: Codable {}
+
+// MARK: Self: Equatable
+extension RenameFolder: Equatable {}
 
 // MARK: Self: Sendable
 extension RenameFolder: Sendable {}

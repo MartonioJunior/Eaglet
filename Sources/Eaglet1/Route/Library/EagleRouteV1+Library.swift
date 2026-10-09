@@ -27,6 +27,9 @@ public extension EagleRouteV1 {
     }
 }
 
+// MARK: Self: Equatable
+extension EagleRouteV1.Library: Equatable {}
+
 // MARK: Self: EagleAPI.Routable
 extension EagleRouteV1.Library: EagleAPI.Routable {
     // swiftlint:disable:next missing_docs

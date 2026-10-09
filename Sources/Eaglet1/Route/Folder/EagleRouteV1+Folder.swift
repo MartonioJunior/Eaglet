@@ -42,6 +42,9 @@ public extension EagleRouteV1.Folder {
 
 extension EagleRouteV1.Folder.ListOptions: Sendable {}
 
+// MARK: Self: Equatable
+extension EagleRouteV1.Folder: Equatable {}
+
 // MARK: Self: EagleAPI.Routable
 extension EagleRouteV1.Folder: EagleAPI.Routable {
     // swiftlint:disable:next missing_docs

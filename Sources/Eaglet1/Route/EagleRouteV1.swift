@@ -25,6 +25,9 @@ public enum EagleRouteV1 {
     case library(Library)
 }
 
+// MARK: Self: Equatable
+extension EagleRouteV1: Equatable {}
+
 // MARK: Self: EagleAPI.Routable
 extension EagleRouteV1: EagleAPI.Routable {
     // swiftlint:disable:next missing_docs
