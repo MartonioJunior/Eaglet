@@ -47,12 +47,14 @@ traits.insert(
 
 // MARK: - Dependencies
 let casePaths = targetDep(name: "CasePaths", package: "swift-case-paths")
+let customDump = targetDep(name: "CustomDump", package: "swift-custom-dump")
 let communication = targetDep(name: "Communication", package: "swift-communication")
 let urlRouting = targetDep(name: "URLRouting", package: "swift-url-routing")
 
 let dependencies: [Package.Dependency] = [
     .package(url: "https://github.com/martoniojunior/swift-communication", branch: "main"),
     .package(url: "https://github.com/pointfreeco/swift-case-paths", .upToNextMajor(from: "1.7.0")),
+    .package(url: "https://github.com/pointfreeco/swift-custom-dump", .upToNextMajor(from: "1.7.3")),
     .package(url: "https://github.com/pointfreeco/swift-url-routing", .upToNextMajor(from: "0.6.2"))
 ]
 
@@ -81,7 +83,7 @@ let targets: [Target] = [
 ]
 
 let testTargets: [Target] = targets.map {
-    .testTarget(name: "\($0.name)Tests", dependencies: [Target.Dependency(stringLiteral: $0.name)] + $0.dependencies)
+    .testTarget(name: "\($0.name)Tests", dependencies: [Target.Dependency(stringLiteral: $0.name), customDump] + $0.dependencies)
 }
 
 // MARK: - Products
