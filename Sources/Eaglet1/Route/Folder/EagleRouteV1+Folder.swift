@@ -87,8 +87,13 @@ public extension URLRoutingClient where Route == EagleAPI.V1.Route {
     }
 
     @concurrent
-    func listFolders(_ options: EagleRouteV1.Folder.ListOptions = .all) async throws -> RenameFolder.Output {
-        try await decodedResponse(for: .folder(.list(options)), as: RenameFolder.Output.self).value
+    func getAllFolders() async throws -> [EagleFolder.ListItem] {
+        try await decodedResponse(for: .folder(.list(.all)), as: [EagleFolder.ListItem].self).value
+    }
+
+    @concurrent
+    func getRecentlyUsedFolders() async throws -> [EagleFolder.RecentItem] {
+        try await decodedResponse(for: .folder(.list(.recentlyUsed)), as: [EagleFolder.RecentItem].self).value
     }
 
     @concurrent
