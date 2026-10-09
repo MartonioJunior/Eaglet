@@ -40,7 +40,7 @@ public extension EagleFolder {
 
 // MARK: Self.RecentItem
 public extension EagleFolder {
-    struct RecentItem {
+    struct RecentItem: Codable, Equatable, Sendable {
         let id: String
         let name: String
         let images: [EagleItem.ID]
