@@ -60,7 +60,12 @@ extension RenameFolder.Output {
 }
 
 // MARK: Self: Codable
-extension RenameFolder: Codable {}
+extension RenameFolder: Codable {
+    enum CodingKeys: String, CodingKey {
+        case id = "folderId"
+        case newName // swiftlint:disable:this explicit_enum_raw_value
+    }
+}
 
 // MARK: Self: Equatable
 extension RenameFolder: Equatable {}
