@@ -5,6 +5,7 @@
 //  Created by Martônio Júnior on 08/10/2026.
 //
 
+import CustomDump
 @testable import Eaglet1
 import Foundation
 import Testing
@@ -26,12 +27,12 @@ struct EagleAppInfoProxyTests {
             )
         )
     ])
-    func decode(rawJson: String, expected: EagleAppInfo.Preferences.Proxy) {
-        let result = try? JSONDecoder().decode(
+    func decode(rawJson: String, expected: EagleAppInfo.Preferences.Proxy) throws {
+        let result = try JSONDecoder().decode(
             EagleAppInfo.Preferences.Proxy.self,
             from: rawJson.data(using: .utf8) ?? Data()
         )
 
-        #expect(result == expected)
+        expectNoDifference(result, expected)
     }
 }
