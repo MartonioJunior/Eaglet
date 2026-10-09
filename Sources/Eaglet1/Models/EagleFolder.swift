@@ -1,56 +1,102 @@
 //
 //  EagleFolder.swift
-//  SwiftKnowledge
+//  Eaglet
 //
 //  Created by Martônio Júnior on 14/04/25.
 //
 
-/// Data structure representing an Eagle Folder.
-public struct EagleFolder: Codable {
-    /// Type representing a color in a string-based representation.
-    public typealias Color = String
+public enum EagleFolder {
     /// Type representing the folder's identifier.
     public typealias ID = String
-    /// Type representing a tag reference in the context of a folder.
-    public typealias Tag = String
-    /// ID of the folder.
-    var id: ID
-    /// Name of the folder.
-    var name: String
-    /// Images associated with this folder
-    var images: [EagleImage] // ???
-    /// IDs of Sub-folders associated with this folder.
-    var folders: [Self.ID]
-    var modificationTime: UInt
-    /// Is the folder editable?
-    var editable: Bool
-    var imagesMappings: [Int: Int]
-    var tags: [Tag]
-    var isExpand: Bool
-    var vstype: String
-    var guidelines: [String]
-    var styles: Styles
-    var isVisible: Bool
-    var index: Int
-    // var hashKey: String // Needs to be added back in
-    var newFolderName: String
-    /// Number of items in this folder
-    var imageCount: Int
-    var depth: Int
-    var descendantImageCount: Int
-    var pinyin: String
-    var extendTags: [String]
-    var covers: [String]
-    var iconColor: Color
-    var icon: String
-    // var children: [EagleItem]
 }
 
-// MARK: EagleFolder.Style
+// MARK: Self.ListItem
 public extension EagleFolder {
-    struct Styles: Codable {
-        var depth: Int
-        var first: Bool
-        var last: Bool
+    struct ListItem: Codable, Equatable, Sendable {
+        /// ID of the folder.
+        var id: ID
+        /// Name of the folder.
+        var name: String
+        /// Description for the folder.
+        var description: String
+        /// Sub-folders associated with this folder.
+        var children: [Self]
+        var modificationTime: UInt
+        /// List of tags associated with a folder
+        var tags: [EagleTag]
+        /// List of tags to extend.
+        var extendTags: [EagleTag]
+        /// Icon for the folder.
+        var icon: EagleIcon
+        /// Color for the folder's icon.
+        var iconColor: EagleColor
+        var pinyin: String
+        /// Password for accessing the folder.
+        var password: String
+        /// Tips for the password of the folder.
+        var passwordTips: String
+    }
+}
+
+// MARK: Self.RecentItem
+public extension EagleFolder {
+    struct RecentItem {
+        let id: String
+        let name: String
+        let images: [EagleItem.ID]
+        let folders: [EagleFolder]
+        let modificationTime: Int
+        let editable: Bool
+        let imagesMappings: [String: String]
+        let tags: [EagleTag]
+        let children: [EagleFolder]
+        let isExpand: Bool
+        let parent: String
+        let icon: String
+        let iconColor: String
+        let size: Int
+        let vstype: String
+        let guidelines: [String]
+        let styles: EagleStyle
+        let isVisible: Bool
+        let index: Int
+        let hashKey: String
+        let newFolderName: String
+        let imageCount: Int
+        let depth: Int
+        let descendantImageCount: Int
+        let pinyin: String
+        let extendTags: [EagleTag]
+        let covers: [String]
+
+        enum CodingKeys: String, CodingKey {
+            case id = "id"
+            case name = "name"
+            case images = "images"
+            case folders = "folders"
+            case modificationTime = "modificationTime"
+            case editable = "editable"
+            case imagesMappings = "imagesMappings"
+            case tags = "tags"
+            case children = "children"
+            case isExpand = "isExpand"
+            case parent = "parent"
+            case icon = "icon"
+            case iconColor = "iconColor"
+            case size = "size"
+            case vstype = "vstype"
+            case guidelines = "guidelines"
+            case styles = "styles"
+            case isVisible = "isVisible"
+            case index = "index"
+            case hashKey = "$$hashKey"
+            case newFolderName = "newFolderName"
+            case imageCount = "imageCount"
+            case depth = "depth"
+            case descendantImageCount = "descendantImageCount"
+            case pinyin = "pinyin"
+            case extendTags = "extendTags"
+            case covers = "covers"
+        }
     }
 }
