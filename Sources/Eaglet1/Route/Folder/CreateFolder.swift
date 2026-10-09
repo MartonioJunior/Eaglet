@@ -6,7 +6,7 @@
 //
 
 /// Data structure containing the necessary information to create a folder in an Eagle Library.
-public struct CreateFolder: Codable {
+public struct CreateFolder {
     /// Name of the folder.
     var folderName: String
     /// ID of the parent folder.
@@ -41,6 +41,12 @@ public extension CreateFolder {
         .init(folderName: name, parent: parent)
     }
 }
+
+// MARK: Self: Codable
+extension CreateFolder: Codable {}
+
+// MARK: Self: Equatable
+extension CreateFolder: Equatable {}
 
 // MARK: Self: Sendable
 extension CreateFolder: Sendable {}
