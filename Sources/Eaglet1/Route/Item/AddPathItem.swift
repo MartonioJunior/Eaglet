@@ -22,7 +22,16 @@ public struct AddPathItem {
 }
 
 // MARK: Self: Codable
-extension AddPathItem: Codable {}
+extension AddPathItem: Codable {
+    enum CodingKeys: String, CodingKey {
+        case path // swiftlint:disable:this explicit_enum_raw_value
+        case name // swiftlint:disable:this explicit_enum_raw_value
+        case website // swiftlint:disable:this explicit_enum_raw_value
+        case tags // swiftlint:disable:this explicit_enum_raw_value
+        case annotation // swiftlint:disable:this explicit_enum_raw_value
+        case folderID = "folderId"
+    }
+}
 
 // MARK: Self: Equatable
 extension AddPathItem: Equatable {}
