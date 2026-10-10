@@ -117,8 +117,9 @@ extension EagleRouteV1.Item: EagleAPI.Routable {
             }
 
             Route(.case(\.setCustomThumbnail)) {
+                Method.post
                 Path { "setCustomThumbnail" }
-                Body(.json(SetCustomThumbnail.self)) // TODO: Replace with the correct parsing system
+                Body(.json(SetCustomThumbnail.self))
             }
 
             Route(.case(\.update)) {
@@ -178,7 +179,7 @@ extension EagleRouteV1.Item.Add: EagleAPI.Routable {
 public extension EagleRouteV1.Item.Add {
     /// Route that describes the type of item to be added.
     @CasePathable
-    enum ItemType: Codable, Equatable {
+    enum ItemType {
         /// Item is sourced from an URL address.
         case url(AddURLItem)
         /// Item is sourced from a local file.
@@ -186,6 +187,36 @@ public extension EagleRouteV1.Item.Add {
     }
 }
 
+extension EagleRouteV1.Item.Add.ItemType: Decodable {
+    public init(from decoder: any Decoder) throws {
+        let container = try decoder.singleValueContainer()
+
+        if let value = try? container.decode(AddURLItem.self) {
+            self = .url(value)
+        } else if let value = try? container.decode(AddPathItem.self) {
+            self = .path(value)
+        } else {
+            throw DecodingError.dataCorruptedError(
+                in: container,
+                debugDescription: """
+                Failed to convert an instance of \(Self.self) from "\(container)"
+                """
+            )
+        }
+    }
+}
+
+extension EagleRouteV1.Item.Add.ItemType: Encodable {
+    public func encode(to encoder: any Encoder) throws {
+        var container = encoder.singleValueContainer()
+        switch self {   
+            case let .url(url): try container.encode(url)
+            case let .path(path): try container.encode(path)
+        }
+    }
+}
+
+extension EagleRouteV1.Item.Add.ItemType: Equatable {}
 extension EagleRouteV1.Item.Add.ItemType: Sendable {}
 
 extension EagleRouteV1.Item.Add.ItemType: EagleAPI.Routable {
@@ -246,3 +277,51 @@ extension EagleRouteV1.Item.Refresh: EagleAPI.Routable {
 
 // MARK: Self: Sendable
 extension EagleRouteV1.Item: Sendable {}
+
+// MARK: URLRoutingClient (EX)
+public extension URLRoutingClient where Route == EagleRouteV1 {
+    @concurrent
+    func addBookmark(_ bookmark: AddBookmark) async throws -> EagleAPI.VoidResponse {
+        try await request(.item(.add(.bookmark(bookmark))))
+    }
+
+    @concurrent
+    func addManyItems(_ items: AddManyItems) async throws -> EagleAPI.VoidResponse {
+        try await request(.item(.add(.many(items))))
+    }
+
+    @concurrent
+    func addPathItem(_ item: AddPathItem) async throws -> EagleAPI.VoidResponse {
+        try await request(.item(.add(.one(.path(item)))))
+    }
+
+    @concurrent
+    func addURLItem(_ item: AddURLItem) async throws -> EagleAPI.VoidResponse {
+        try await request(.item(.add(.one(.url(item)))))
+    }
+
+    @concurrent
+    func listItems(_ item: ListItems = .init()) async throws -> EagleAPI.Response<[EagleItem]> {
+        try await decodedResponse(for: .item(.list(item)), as: EagleAPI.Response<[EagleItem]>.self).value
+    }
+
+    @concurrent
+    func moveToTrash(_ items: MoveToTrash) async throws -> EagleAPI.VoidResponse {
+        try await request(.item(.moveToTrash(items)))
+    }
+
+    @concurrent
+    func refreshThumbnail(forID itemID: EagleItem.ID) async throws -> EagleAPI.VoidResponse {
+        try await request(.item(.refresh(.thumbnail(.init(id: itemID)))))
+    }
+
+    @concurrent
+    func setCustomThumbnail(_ thumbnail: SetCustomThumbnail) async throws -> EagleAPI.VoidResponse {
+        try await request(.item(.setCustomThumbnail(thumbnail)))
+    }
+
+    @concurrent
+    func updateItem(_ item: UpdateItem) async throws -> EagleItem {
+        try await decodedResponse(for: .item(.update(item)), as: EagleAPI.Response<UpdateItem.Output>.self).value.data
+    }
+}
