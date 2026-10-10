@@ -5,8 +5,10 @@
 //  Created by Martônio Júnior on 14/04/25.
 //
 
+public import Common
+
 /// Data structure representing an Eagle Item.
-public struct EagleItem: Codable {
+public struct EagleItem {
     /// Type representing the file extension for the type.
     public typealias FileExtension = String
     /// Type representing the item's identifier.
@@ -20,9 +22,9 @@ public struct EagleItem: Codable {
     /// File size for the item.
     public var size: UInt
     /// Birth time.
-    public var btime: UInt64
+    public var btime: UInt64?
     /// Modify time.
-    public var mtime: UInt64
+    public var mtime: UInt64?
     /// File extension of the item.
     public var ext: FileExtension
     /// Tags associated with the item.
@@ -50,13 +52,13 @@ public struct EagleItem: Codable {
     /// Medium where the item comes from.
     public var medium: String?
     /// Duration of the video and/or audio clip.
-    public var duration: String? // UInt?
+    public var duration: StringBacked<UInt>?
     /// Does this item have a thumbnail?
     public var noThumbnail: Bool?
     /// Last modification timestamp.
     public var lastModified: UInt
     /// Palette of colors associated with this item.
-    public var palettes: [Color]
+    public var palettes: [PaletteColor]
     /// Star Rating for this item.
     /// 
     /// `nil` indicates that the item has yet to get a rating
@@ -66,11 +68,31 @@ public struct EagleItem: Codable {
 // MARK: EagleItem.Color
 public extension EagleItem {
     /// Color in the palette of an Eagle item.
-    struct Color: Codable {
+    struct PaletteColor {
         /// Color components.
         var color: [UInt8]
         /// Weight of the color in relation to the overall thumbnail.
         var ratio: Double
-        // var hashKey: String // Needs to be added back in
+        var hashKey: String?
     }
 }
+
+extension EagleItem.PaletteColor: Codable {
+    enum CodingKeys: String, CodingKey {
+        case color // swiftlint:disable:this explicit_enum_raw_value
+        case ratio // swiftlint:disable:this explicit_enum_raw_value
+        case hashKey = "$$hashKey"
+    }
+}
+
+extension EagleItem.PaletteColor: Equatable {}
+extension EagleItem.PaletteColor: Sendable {}
+
+// MARK: Self: Codable
+extension EagleItem: Codable {}
+
+// MARK: Self: Equatable
+extension EagleItem: Equatable {}
+
+// MARK: Self: Sendable
+extension EagleItem: Sendable {}
