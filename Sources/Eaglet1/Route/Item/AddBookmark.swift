@@ -24,11 +24,20 @@ public struct AddBookmark {
     /// The parameter can be used to alter the bookmarks' sorting order in Eagle. 
     var modificationTime: Int?
     /// If this parameter is defined, the bookmark will be added to the corresponding folder.
-    var folderID: Int?
+    var folderID: EagleFolder.ID?
 }
 
 // MARK: Self: Codable
-extension AddBookmark: Codable {}
+extension AddBookmark: Codable {
+    enum CodingKeys: String, CodingKey {
+        case url // swiftlint:disable:this explicit_enum_raw_value
+        case name // swiftlint:disable:this explicit_enum_raw_value
+        case base64 // swiftlint:disable:this explicit_enum_raw_value
+        case tags // swiftlint:disable:this explicit_enum_raw_value
+        case modificationTime // swiftlint:disable:this explicit_enum_raw_value
+        case folderID = "folderId"
+    }
+}
 
 // MARK: Self: Equatable
 extension AddBookmark: Equatable {}
