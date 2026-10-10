@@ -14,7 +14,12 @@ public struct AddManyItems {
 }
 
 // MARK: Self: Codable
-extension AddManyItems: Codable {}
+extension AddManyItems: Codable {
+    enum CodingKeys: String, CodingKey {
+        case items // swiftlint:disable:this explicit_enum_raw_value
+        case folderID = "folderId"
+    }
+}
 
 // MARK: Self: Equatable
 extension AddManyItems: Equatable {}
