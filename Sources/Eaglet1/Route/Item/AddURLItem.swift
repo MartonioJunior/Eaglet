@@ -27,10 +27,26 @@ public struct AddURLItem {
     var modificationTime: Int?
     /// If this parameter is defined, the bookmark will be added to the corresponding folder.
     var folderID: EagleFolder.ID?
+    /// Optional, customize the HTTP headers properties.
+    /// 
+    /// This could be used to circumvent the security of certain websites.
+    var headers: [String: String]?
 }
 
 // MARK: Self: Codable
-extension AddURLItem: Codable {}
+extension AddURLItem: Codable {
+    enum CodingKeys: String, CodingKey {
+        case url // swiftlint:disable:this explicit_enum_raw_value
+        case name // swiftlint:disable:this explicit_enum_raw_value
+        case website // swiftlint:disable:this explicit_enum_raw_value
+        case tags // swiftlint:disable:this explicit_enum_raw_value
+        case star // swiftlint:disable:this explicit_enum_raw_value
+        case annotation // swiftlint:disable:this explicit_enum_raw_value
+        case modificationTime // swiftlint:disable:this explicit_enum_raw_value
+        case folderID = "folderId"
+        case headers // swiftlint:disable:this explicit_enum_raw_value
+    }
+}
 
 // MARK: Self: Equatable
 extension AddURLItem: Equatable {}
