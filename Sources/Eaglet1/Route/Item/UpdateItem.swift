@@ -8,7 +8,7 @@
 /// Data structure with the necessary information to update an item in an Eagle Library.
 public struct UpdateItem {
     /// ID of the item to be modified.
-    var id: Int
+    var id: EagleItem.ID
     /// If this parameter is defined, updates an item's tags.
     var tags: [String]?
     /// If this parameter is defined, updates an item's annotation.
@@ -17,6 +17,11 @@ public struct UpdateItem {
     var url: String?
     /// If this parameter is defined, updates an item's star rating.
     var star: Int?
+}
+
+// MARK: Self.Output
+public extension UpdateItem {
+    typealias Output = EagleItem
 }
 
 // MARK: Self: Codable
