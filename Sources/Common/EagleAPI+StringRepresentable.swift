@@ -16,3 +16,6 @@ extension Bool: EagleAPI.StringRepresentable {}
 
 // MARK: Int (EX)
 extension Int: EagleAPI.StringRepresentable {}
+
+// MARK: UInt (EX)
+extension UInt: EagleAPI.StringRepresentable {}
