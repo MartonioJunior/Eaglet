@@ -15,8 +15,14 @@ public extension URLRoutingClient where Route == EagleRouteV1 {
     }
 
     @concurrent
-    func addManyItems(_ items: AddManyItems) async throws -> EagleAPI.VoidResponse {
-        try await request(.item(.add(.many(items))))
+    func addManyPath(_ items: some Sequence<AddPathItem>, toFolder folderID: EagleFolder.ID? = nil) async throws -> EagleAPI.VoidResponse {
+        try await request(.item(.add(.manyPath(.init(items: items.map { .path($0) }, folderID: folderID)))))
+    }
+
+
+    @concurrent
+    func addManyURL(_ items: some Sequence<AddURLItem>, toFolder folderID: EagleFolder.ID? = nil) async throws -> EagleAPI.VoidResponse {
+        try await request(.item(.add(.manyURL(.init(items: items.map { .url($0) }, folderID: folderID)))))
     }
 
     @concurrent
