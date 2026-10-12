@@ -22,11 +22,11 @@ public extension EagleRouteV1 {
         /// - Categorizations
         /// - Folders
         /// - Dimensions
-        /// 
+        ///
         /// and more...
-        case info(EagleFolder.ID)
+        case info(EagleItem.ID)
         /// `GET` Get the path of the thumbnail of the file specified.
-        /// 
+        ///
         /// If you would like to get a batch of thumbnail paths, the combination of "Library path + Object ID" is recommended.
         case thumbnail(EagleFolder.ID)
         /// `GET` Get items that match the filter condition.
@@ -37,10 +37,10 @@ public extension EagleRouteV1 {
         case refresh(Refresh)
         /// Sets a custom thumbnail for a file.
         case setCustomThumbnail(SetCustomThumbnail)
-        /// `POST` Modify data of specified fields of the item. 
+        /// `POST` Modify data of specified fields of the item.
         case update(UpdateItem)
         /// `GET` Get the list of folders of the current library.
-        /// 
+        ///
         /// Same as using `.list(.init())`.
         public static var listAll: Self { .list(.init()) }
     }
@@ -56,6 +56,7 @@ extension EagleRouteV1.Item: EagleAPI.Routable {
             }
 
             Route(.case(\.info)) {
+                Method.get
                 Path { "info" }
                 Query {
                     Field("id")
@@ -63,6 +64,7 @@ extension EagleRouteV1.Item: EagleAPI.Routable {
             }
 
             Route(.case(\.thumbnail)) {
+                Method.get
                 Path { "thumbnail" }
                 Query {
                     Field("id")
@@ -70,40 +72,9 @@ extension EagleRouteV1.Item: EagleAPI.Routable {
             }
 
             Route(.case(\.list)) {
+                Method.get
                 Path { "list" }
-                Parse(.memberwise(ListItems.init)) {
-                    Query {
-                        Field("limit", default: 200) { Digits() }
-                        Field("offset", default: 0) { Digits() }
-                        Field("orderBy", default: ListItems.SortingOptions(.ascending, .name)) {
-                            ListItems.SortingOptions.parser
-                        }
-                        Optionally {
-                            Field("keyword", default: nil)
-                        }
-                        Optionally {
-                            Field("ext", default: nil)
-                        }
-                        Optionally {
-                            Field("tags", default: nil) {
-                                Many {
-                                    Parse(.string)
-                                } separator: {
-                                    ",".utf8
-                                }
-                            }
-                        }
-                        Optionally {
-                            Field("folders", default: nil) {
-                                Many {
-                                    Parse(.string)
-                                } separator: {
-                                    ",".utf8
-                                }
-                            }
-                        }
-                    }
-                }
+                ListItems.parser
             }
 
             Route(.case(\.moveToTrash)) {
@@ -137,11 +108,13 @@ public extension EagleRouteV1.Item {
     @CasePathable
     enum Add: Equatable {
         /// `POST` Adds a single item to Eagle App.
-        /// 
+        ///
         /// If you intend to add multiple items in a row, we suggest you use `.many(_:)` instead.
         case one(ItemType)
-        /// `POST` Adds multiple items to Eagle App.
-        case many(AddManyItems)
+        /// `POST` Adds multiple URL items to Eagle App.
+        case manyURL(AddManyItems)
+        /// `POST` Adds multiple path items to Eagle App.
+        case manyPath(AddManyItems)
         /// `POST` Save the link in the URL form to Eagle App.
         case bookmark(AddBookmark)
     }
@@ -152,26 +125,35 @@ extension EagleRouteV1.Item.Add: Sendable {}
 extension EagleRouteV1.Item.Add: EagleAPI.Routable {
     // swiftlint:disable:next missing_docs
     public static var router: some Router<EagleRouteV1.Item.Add> {
-        OneOf {
-            Route(.case(\.one)) {
-                ItemType.router
-            }
-
-            Route(.case(\.many)) {
-                Method.post
-                OneOf {
-                    Path { "addFromURLs" }
-                    Path { "addFromPaths" }
+        AnyParserPrinter(
+            OneOf {
+                Route(.case(\.one)) {
+                    ItemType.router
                 }
-                Body(.json(AddManyItems.self))
-            }
 
-            Route(.case(\.bookmark)) {
-                Method.post
-                Path { "addBookmark" }
-                Body(.json(AddBookmark.self))
+                Route(.case(\.manyURL)) {
+                    Method.post
+                    OneOf {
+                        Path { "addFromURLs" }
+                    }
+                    Body(.json(AddManyItems.self))
+                }
+
+                Route(.case(\.manyPath)) {
+                    Method.post
+                    OneOf {
+                        Path { "addFromPaths" }
+                    }
+                    Body(.json(AddManyItems.self))
+                }
+
+                Route(.case(\.bookmark)) {
+                    Method.post
+                    Path { "addBookmark" }
+                    Body(.json(AddBookmark.self))
+                }
             }
-        }
+        )
     }
 }
 
@@ -209,7 +191,7 @@ extension EagleRouteV1.Item.Add.ItemType: Decodable {
 extension EagleRouteV1.Item.Add.ItemType: Encodable {
     public func encode(to encoder: any Encoder) throws {
         var container = encoder.singleValueContainer()
-        switch self {   
+        switch self {
             case let .url(url): try container.encode(url)
             case let .path(path): try container.encode(path)
         }
@@ -244,11 +226,11 @@ public extension EagleRouteV1.Item {
     @CasePathable
     enum Refresh: Equatable {
         /// `POST` Re-analysis the color of the file.
-        /// 
+        ///
         /// When changes to the original file were made, you can call this function to refresh the Color Analysis.
         case palette(RefreshItem)
         /// `POST` Re-generate the thumbnail of the file used to display in the List.
-        /// 
+        ///
         /// When changes to the original file were made, you can call this function to re-generate the thumbnail, the color analysis will also be made.
         case thumbnail(RefreshItem)
     }
