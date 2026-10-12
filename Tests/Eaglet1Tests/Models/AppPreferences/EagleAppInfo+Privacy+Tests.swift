@@ -5,6 +5,7 @@
 //  Created by Martônio Júnior on 08/10/2026.
 //
 
+import Common
 import CustomDump
 @testable import Eaglet1
 import Foundation
@@ -48,5 +49,55 @@ struct EagleAppInfoPrivacyTests {
         )
 
         expectNoDifference(result, expected)
+    }
+
+    @Test("Checks whether the privacy feature is enabled", arguments: [
+        (
+            EagleAppInfo.Preferences.Privacy(
+                enable: true,
+                password: "1234",
+                passwordTips: "Simple Pass"
+            ),
+            true
+        ),
+        (
+            EagleAppInfo.Preferences.Privacy(
+                enable: false,
+                password: "1234",
+                passwordTips: "Simple Pass"
+            ),
+            false
+        )
+    ])
+    func isEnabled_get(_ sut: EagleAppInfo.Preferences.Privacy, expected: Bool) {
+        #expect(sut.isEnabled == expected)
+    }
+
+    @Test("Updates the toggle for the privacy feature", arguments: [
+        (
+            EagleAppInfo.Preferences.Privacy(
+                enable: false,
+                password: "1234",
+                passwordTips: "Simple Pass"
+            ),
+            true
+        ),
+        (
+            EagleAppInfo.Preferences.Privacy(
+                enable: true,
+                password: "1234",
+                passwordTips: "Simple Pass"
+            ),
+            false
+        )
+    ])
+    func isEnabled_set(_ sut: EagleAppInfo.Preferences.Privacy, _ newValue: Bool) {
+        var sut = sut
+
+        expectDifference(sut) {
+            sut.isEnabled = newValue
+        } changes: {
+            $0.enable = StringBacked(newValue)
+        }
     }
 }
