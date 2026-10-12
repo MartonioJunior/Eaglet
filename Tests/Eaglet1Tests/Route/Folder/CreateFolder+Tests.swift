@@ -19,7 +19,7 @@ struct CreateFolderTests {
             }
             """,
             CreateFolder(
-                folderName: "The Folder Name"
+                named: "The Folder Name"
             )
         ),
         (
@@ -30,7 +30,7 @@ struct CreateFolderTests {
             }
             """,
             CreateFolder(
-                folderName: "The Folder Name",
+                named: "The Folder Name",
                 parent: "KBJJSMMVF9WYL"
             )
         )
@@ -79,5 +79,15 @@ struct CreateFolderTests {
         )
 
         expectNoDifference(result, expected)
+    }
+
+    @Test("Creates data for a create folder operation", arguments: [
+        ("Progression", EagleFolder.ID?.none),
+        ("References", EagleFolder.ID?.some("KBJJSMMVF9WYL"))
+    ])
+    func initializer(named folderName: String, parent: EagleFolder.ID?) async throws {
+        let result = CreateFolder(named: folderName, parent: parent)
+        #expect(result.folderName == folderName)
+        #expect(result.parent == parent)
     }
 }

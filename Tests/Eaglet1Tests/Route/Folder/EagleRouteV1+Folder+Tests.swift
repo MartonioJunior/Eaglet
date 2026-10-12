@@ -14,7 +14,7 @@ import URLRouting
 struct EagleRouteV1FolderTests {
     @Test("Creates a new folder", arguments: [
         (
-            CreateFolder(folderName: "Lollipop"),
+            CreateFolder(named: "Lollipop"),
             CreateFolder.Output(
                 id: "KBJJSMMVF9WYL",
                 name: "Lollipop",
