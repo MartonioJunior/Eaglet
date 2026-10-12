@@ -6,4 +6,16 @@
 //
 
 /// Data structure describing a thumbnail Eagle image.
-public struct EagleImage: Codable {}
+public struct EagleImage {}
+
+// MARK: Self: Decodable
+extension EagleImage: Decodable {}
+
+// MARK: Self: Encodable
+extension EagleImage: Encodable {}
+
+// MARK: Self: Equatable
+extension EagleImage: Equatable {}
+
+// MARK: Self: Sendable
+extension EagleImage: Sendable {}
