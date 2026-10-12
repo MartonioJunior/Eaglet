@@ -34,20 +34,25 @@ extension EagleRouteV1: EagleAPI.Routable {
     public static var router: some Router<EagleRouteV1> {
         OneOf {
             Route(.case(\.application.info)) {
+                Scheme.http
+                Method.get
                 Path { "application"; "info" }
             }
 
             Route(.case(\.folder)) {
+                Scheme.http
                 Path { "folder" }
                 Folder.router
             }
 
             Route(.case(\.item)) {
+                Scheme.http
                 Path { "item" }
                 Item.router
             }
 
             Route(.case(\.library)) {
+                Scheme.http
                 Path { "library" }
                 Library.router
             }

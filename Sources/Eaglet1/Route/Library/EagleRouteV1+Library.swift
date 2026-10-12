@@ -36,10 +36,12 @@ extension EagleRouteV1.Library: EagleAPI.Routable {
     public static var router: some Router<EagleRouteV1.Library> {
         OneOf {
             Route(.case(\.info)) {
+                Method.get
                 Path { "info" }
             }
 
             Route(.case(\.history)) {
+                Method.get
                 Path { "history" }
             }
 
@@ -50,6 +52,7 @@ extension EagleRouteV1.Library: EagleAPI.Routable {
             }
 
             Route(.case(\.icon)) {
+                Method.get
                 Path { "icon" }
                 Query {
                     Field("libraryPath")

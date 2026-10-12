@@ -69,10 +69,12 @@ extension EagleRouteV1.Folder: EagleAPI.Routable {
             }
 
             Route(.case(\.list.all)) {
+                Method.get
                 Path { "list" }
             }
 
             Route(.case(\.list.recentlyUsed)) {
+                Method.get
                 Path { "listRecent" }
             }
         }
