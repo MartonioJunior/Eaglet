@@ -39,43 +39,74 @@ struct EagletRouteV1ItemTests {
         expectNoDifference(result, expected)
     }
 
-    @Test("Adds multiple items at once", arguments: [
+    @Test("Adds multiple path items at once", arguments: [
         (
-            AddManyItems(
-                items: [
-                    .path(
-                        AddPathItem(
-                            path: "C://Users/User/Downloads/test.jpg",
-                            name: "アルトリア･キャスター",
-                            website: "https://www.pixiv.net/artworks/83585181",
-                            annotation: "久坂んむり",
-                            tags: ["FGO", "アルトリア・キャスター"],
-                        )
-                    ),
-                    .path(
-                        AddPathItem(
-                            path: "C://Users/User/Downloads/test2.jpg",
-                            name: "アルトリア･キャスター",
-                            website: "https://www.pixiv.net/artworks/83585181",
-                            annotation: "久坂んむり",
-                            tags: ["FGO", "アルトリア・キャスター"],
-                        )
-                    )
-                ],
-                folderID: "KEHB8I2C9F23H"
-            ),
+            [
+                AddPathItem(
+                    path: "C://Users/User/Downloads/test.jpg",
+                    name: "アルトリア･キャスター",
+                    website: "https://www.pixiv.net/artworks/83585181",
+                    annotation: "久坂んむり",
+                    tags: ["FGO", "アルトリア・キャスター"],
+                ),
+                AddPathItem(
+                    path: "C://Users/User/Downloads/test2.jpg",
+                    name: "アルトリア･キャスター",
+                    website: "https://www.pixiv.net/artworks/83585181",
+                    annotation: "久坂んむり",
+                    tags: ["FGO", "アルトリア・キャスター"],
+                )
+            ],
+            "KEHB8I2C9F23H",
             EagleAPI.VoidResponse("success")
         )
     ])
-    func addManyItems(_ items: AddManyItems, expected: EagleAPI.VoidResponse) async throws {
+    func addManyPath(_ items: [AddPathItem], toFolder folderID: EagleFolder.ID?, expected: EagleAPI.VoidResponse) async throws {
         let client: URLRoutingClient<EagleRouteV1> = .failing.override {
-            guard case .item(.add(.many)) = $0 else { return false }
+            guard case .item(.add(.manyPath)) = $0 else { return false }
             return true
         } with: {
             try .ok(expected)
         }
 
-        let result = try await client.addManyItems(items)
+        let result = try await client.addManyPath(items, toFolder: folderID)
+
+        expectNoDifference(result, expected)
+    }
+
+    @Test("Adds multiple path items at once", arguments: [
+        (
+            [
+                AddURLItem(
+                    url: "https://cdn.dribbble.com/users/674925/screenshots/12020761/media/6420a7ec85751c11e5254282d6124950.png",
+                    name: "Work",
+                    website: "https://dribbble.com/shots/12020761-Work",
+                    tags: ["Illustration", "Design"],
+                    modificationTime: 1591325171767,
+                    headers: ["referer": "dribbble.com"]
+                ),
+                AddURLItem(
+                    url: "https://cdn.dribbble.com/users/674925/screenshots/12061400/media/71da9ba40c47f09d8cd6953d661e61fd.png",
+                    name: "Work2",
+                    website:  "https://dribbble.com/shots/12061400-work2",
+                    tags: ["Illustration", "Design"],
+                    modificationTime: 1591325171766,
+                    headers: ["referer": "dribbble.com"]
+                )
+            ],
+            "KEHB8I2C9F23H",
+            EagleAPI.VoidResponse("success")
+        )
+    ])
+    func addManyURL(_ items: [AddURLItem], toFolder folderID: EagleFolder.ID?, expected: EagleAPI.VoidResponse) async throws {
+        let client: URLRoutingClient<EagleRouteV1> = .failing.override {
+            guard case .item(.add(.manyURL)) = $0 else { return false }
+            return true
+        } with: {
+            try .ok(expected)
+        }
+
+        let result = try await client.addManyURL(items, toFolder: folderID)
 
         expectNoDifference(result, expected)
     }
