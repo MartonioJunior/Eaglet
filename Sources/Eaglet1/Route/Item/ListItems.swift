@@ -6,6 +6,7 @@
 //
 
 import Parsing
+public import URLRouting
 
 /// Data structure with the necessary information to query an Eagle Library
 /// for a list of items.
@@ -55,6 +56,48 @@ public struct ListItems {
     }
 }
 
+// MARK: DotSyntax
+public extension ListItems {
+    static var parser: AnyParserPrinter<URLRequestData, Self> {
+        Parse(.memberwise(Self.init)) {
+            Query {
+                Field("limit", default: 200) { Digits() }
+                Field("offset", default: 0) { Digits() }
+                Field("orderBy", default: SortingOptions(.ascending, .name)) {
+                    Self.SortingOptions.parser
+                }
+
+                Optionally {
+                    Field("keyword", default: nil)
+                }
+                Optionally {
+                    Field("ext", default: nil)
+                }
+                Optionally {
+                    Field("tags", default: nil) {
+                        listParser
+                    }
+                }
+                Optionally {
+                    Field("folders", default: nil) {
+                        listParser
+                    }
+                }
+            }
+        }.eraseToAnyParserPrinter()
+    }
+
+    static var listParser: some ParserPrinter<Substring, [String]> {
+        Many(1...) {
+            Prefix { $0 != "," }.map(.string)
+        } separator: {
+            ",".utf8
+        } terminator: {
+            End()
+        }
+    }
+}
+
 // MARK: Self.Output
 public extension ListItems {
     typealias Output = [EagleItem]
@@ -67,9 +110,15 @@ public extension ListItems {
     struct SortingOptions {
         /// Parser for sorting options.
         static var parser: AnyParserPrinter<Substring, Self> {
-            Parse(.memberwise(Self.init)) {
-                SortOrder.parser
-                SortParameter.parser
+            OneOf {
+                "CREATEDATE".map { Self(.ascending, .creationDate) }
+                "-CREATEDATE".map { Self(.descending, .creationDate) }
+                "FILESIZE".map { Self(.ascending, .fileSize) }
+                "-FILESIZE".map { Self(.descending, .fileSize) }
+                "NAME".map { Self(.ascending, .name) }
+                "-NAME".map { Self(.descending, .name) }
+                "RESOLUTION".map { Self(.ascending, .resolution) }
+                "-RESOLUTION".map { Self(.descending, .resolution) }
             }.eraseToAnyParserPrinter()
         }
         /// Parameter that the sorting will be based on.
@@ -101,12 +150,7 @@ public extension ListItems {
         case resolution = "RESOLUTION"
         /// Parser for the sort parameter.
         static var parser: some ParserPrinter<Substring, Self> {
-            OneOf {
-                "CREATEDATE".map { Self.creationDate }
-                "FILESIZE".map { Self.fileSize }
-                "NAME".map { Self.name }
-                "RESOLUTION".map { Self.resolution }
-            }
+            Parse(.string).map(.representing(Self.self))
         }
     }
     /// Sorting order used when listing items based on a parameter.
@@ -117,7 +161,7 @@ public extension ListItems {
         case descending
         /// Parser for the sort order.
         static var parser: some ParserPrinter<Substring, Self> {
-            "-".map { Self.descending }.replaceError(with: .ascending)
+            StartsWith("-").map { Self.descending }.replaceError(with: .ascending)
         }
     }
 }
