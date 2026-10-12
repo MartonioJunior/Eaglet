@@ -61,3 +61,26 @@ extension EagleRouteV1.Library: EagleAPI.Routable {
 
 // MARK: Self: Sendable
 extension EagleRouteV1.Library: Sendable {}
+
+// MARK: URLRoutingClient (EX)
+public extension URLRoutingClient where Route == EagleRouteV1 {
+    @concurrent
+    func getActiveLibraryInfo() async throws -> EagleLibrary {
+        try await decodedResponse(for: .library(.info), as: EagleAPI.Response<EagleLibrary>.self).value.data
+    }
+
+    @concurrent
+    func icon(for library: LibraryTarget) async throws -> EagleImage {
+        try await decodedResponse(for: .library(.icon(library.libraryPath)), as: EagleAPI.Response<EagleImage>.self).value.data
+    }
+
+    @concurrent
+    func libraryHistory() async throws -> [EagleLibrary.Path] {
+        try await decodedResponse(for: .library(.history), as: EagleAPI.Response<[EagleLibrary.Path]>.self).value.data
+    }
+
+    @concurrent
+    func switchLibrary(to target: LibraryTarget) async throws -> EagleAPI.VoidResponse {
+        try await request(.library(.switch(target.libraryPath)))
+    }
+}
