@@ -8,15 +8,36 @@
 public import URLRouting
 
 public extension EagleAPI {
-    struct Response<T: Decodable>: Decodable {
+    struct Response<T> {
         public let status: String
         public let data: T
+
+        public init(_ data: T, status: String) {
+            self.data = data
+            self.status = status
+        }
     }
 
-    struct VoidResponse: Decodable {
+    struct VoidResponse: Codable, Equatable, Sendable {
         public let status: String
+
+        public init(_ status: String) {
+            self.status = status
+        }
     }
 }
+
+// MARK: Self: Decodable
+extension EagleAPI.Response: Decodable where T: Decodable {}
+
+// MARK: Self: Equatable
+extension EagleAPI.Response: Encodable where T: Encodable {}
+
+// MARK: Self: Equatable
+extension EagleAPI.Response: Equatable where T: Equatable {}
+
+// MARK: Self: Equatable
+extension EagleAPI.Response: Sendable where T: Sendable {}
 
 // MARK: EagleAPI.Client (EX)
 public extension EagleAPI.Client {
