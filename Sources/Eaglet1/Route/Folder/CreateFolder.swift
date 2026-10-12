@@ -11,6 +11,14 @@ public struct CreateFolder {
     var folderName: String
     /// ID of the parent folder.
     var parent: EagleFolder.ID?
+    /// Defines a create folder operation.
+    /// - Parameters:
+    ///   - name: Name of the folder.
+    ///   - parent: ID of the parent folder.
+    public init(named folderName: String, parent: EagleFolder.ID? = nil) {
+        self.folderName = folderName
+        self.parent = parent
+    }
 }
 
 // MARK: Self.Output
@@ -26,19 +34,6 @@ public extension CreateFolder {
         var tags: [EagleTag]
         var children: [EagleFolder.ID]
         var isExpand: Bool
-    }
-}
-
-// MARK: DotSyntax
-public extension CreateFolder {
-    /// Defines a create folder operation.
-    /// - Parameters:
-    ///   - name: Name of the folder.
-    ///   - parent: ID of the parent folder.
-    ///
-    /// - Returns: `CreateFolder` object for use with the API bindings.
-    static func named(_ name: String, parent: EagleFolder.ID? = nil) -> Self {
-        .init(folderName: name, parent: parent)
     }
 }
 
