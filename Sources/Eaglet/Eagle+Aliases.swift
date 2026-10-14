@@ -6,5 +6,5 @@
 //
 
 public enum Eagle {
-    typealias API = EagleAPI.V1
+    public typealias API = EagleAPI.V1
 }
