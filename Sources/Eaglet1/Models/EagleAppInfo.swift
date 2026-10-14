@@ -5,7 +5,7 @@
 //  Created by Martônio Júnior on 14/04/25.
 //
 
-import Common
+import EagletCore
 
 /// Data structure containing all of the information about the running instance of the Eagle app.
 /// 

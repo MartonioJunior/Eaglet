@@ -5,7 +5,7 @@
 //  Created by Martônio Júnior on 08/10/2026.
 //
 
-public import Common
+public import EagletCore
 
 public extension EagleAppInfo.Preferences {
     struct Privacy: Codable, Equatable, Sendable {

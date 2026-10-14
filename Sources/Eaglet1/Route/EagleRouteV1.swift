@@ -7,7 +7,7 @@
 
 import APIUtils
 public import CasePaths
-public import Common
+public import EagletCore
 import Foundation
 import SwiftURLRoutingHelpers
 public import URLRouting

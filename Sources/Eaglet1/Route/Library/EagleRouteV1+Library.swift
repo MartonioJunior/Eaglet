@@ -6,7 +6,7 @@
 //
 
 public import CasePaths
-public import Common
+public import EagletCore
 import Foundation
 public import URLRouting
 

@@ -5,7 +5,7 @@
 //  Created by Martônio Júnior on 12/10/2026.
 //
 
-import Common
+import EagletCore
 import CustomDump
 @testable import Eaglet1
 import Foundation

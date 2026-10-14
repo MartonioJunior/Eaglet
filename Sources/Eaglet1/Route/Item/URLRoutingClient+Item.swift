@@ -5,7 +5,7 @@
 //  Created by Martônio Júnior on 10/10/2026.
 //
 
-import Common
+import EagletCore
 import URLRouting
 
 public extension URLRoutingClient where Route == EagleRouteV1 {

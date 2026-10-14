@@ -5,7 +5,7 @@
 //  Created by Martônio Júnior on 14/04/25.
 //
 
-public import Common
+public import EagletCore
 
 /// Data structure representing an Eagle Library.
 public struct EagleLibrary {

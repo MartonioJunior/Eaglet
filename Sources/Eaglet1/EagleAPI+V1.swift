@@ -6,7 +6,7 @@
 //
 
 public import APIUtils
-public import Common
+public import EagletCore
 import CommunicationMacros
 import Foundation
 import URLRouting
