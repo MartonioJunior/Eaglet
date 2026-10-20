@@ -5,8 +5,8 @@
 //  Created by Martônio Júnior on 10/10/2026.
 //
 
-import EagletCore
-import URLRouting
+public import EagletCore
+public import URLRouting
 
 public extension URLRoutingClient where Route == EagleRouteV1 {
     @concurrent
