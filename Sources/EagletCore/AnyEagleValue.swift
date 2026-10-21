@@ -65,7 +65,7 @@ extension AnyEagleValue: Decodable {
 
 // MARK: Self: Encodable
 extension AnyEagleValue: Encodable {
-    public func encode(to encoder: Encoder) throws {
+    public func encode(to encoder: any Encoder) throws {
         if let array = value as? [Any] {
             var container = encoder.unkeyedContainer()
             for value in array {
