@@ -5,6 +5,7 @@
 //  Created by Martônio Júnior on 14/04/25.
 //
 
+public import EagletCore
 import Parsing
 public import URLRouting
 
@@ -75,26 +76,16 @@ public extension ListItems {
                 }
                 Optionally {
                     Field("tags", default: nil) {
-                        listParser
+                        AnyParserPrinter.listParser()
                     }
                 }
                 Optionally {
                     Field("folders", default: nil) {
-                        listParser
+                        AnyParserPrinter.listParser()
                     }
                 }
             }
         }.eraseToAnyParserPrinter()
-    }
-
-    static var listParser: some ParserPrinter<Substring, [String]> {
-        Many(1...) {
-            Prefix { $0 != "," }.map(.string)
-        } separator: {
-            ",".utf8
-        } terminator: {
-            End()
-        }
     }
 }
 
