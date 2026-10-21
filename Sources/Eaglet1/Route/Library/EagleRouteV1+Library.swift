@@ -48,7 +48,7 @@ extension EagleRouteV1.Library: EagleAPI.Routable {
             Route(.case(\.switch)) {
                 Method.post
                 Path { "switch" }
-                Body(.json(EagleLibrary.Path.self))
+                Body(.json(EagleLibrary.Path.self, encoder: .stringify))
             }
 
             Route(.case(\.icon)) {
@@ -83,7 +83,7 @@ public extension URLRoutingClient where Route == EagleRouteV1 {
     }
 
     @concurrent
-    func switchLibrary(to target: LibraryTarget) async throws -> EagleAPI.VoidResponse {
-        try await request(.library(.switch(target.libraryPath)))
+    func switchLibrary(to target: LibraryTarget) async throws -> EagleAPI.Response<Bool> {
+        try await decodedResponse(for: .library(.switch(target.libraryPath)), as: EagleAPI.Response<Bool>.self).value
     }
 }
