@@ -83,7 +83,7 @@ public extension URLRoutingClient where Route == EagleRouteV1 {
     }
 
     @concurrent
-    func switchLibrary(to target: LibraryTarget) async throws -> EagleAPI.Response<Bool> {
-        try await decodedResponse(for: .library(.switch(target.libraryPath)), as: EagleAPI.Response<Bool>.self).value
+    func switchLibrary(to target: LibraryTarget) async throws -> EagleAPI.VoidResponse {
+        try await request(.library(.switch(target.libraryPath)))
     }
 }
