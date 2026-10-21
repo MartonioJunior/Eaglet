@@ -5,6 +5,8 @@
 //  Created by Martônio Júnior on 14/04/25.
 //
 
+import EagletCore
+
 /// Data structure containing the necessary information to rename a folder in an Eagle Library.
 public struct RenameFolder {
     /// Folder's ID.

@@ -5,10 +5,10 @@
 //  Created by Martônio Júnior on 08/10/2026.
 //
 
-struct EagleStyle {
-    var depth: Int
-    var first: Bool
-    var last: Bool
+public struct EagleStyle {
+    public var depth: Int
+    public var first: Bool
+    public var last: Bool
 }
 
 // MARK: Self: Decodable

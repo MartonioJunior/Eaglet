@@ -7,9 +7,9 @@
 
 public struct LibraryTarget {
     /// Path of the library.
-    var libraryPath: EagleLibrary.Path
+    public var libraryPath: String
 
-    public init(_ libraryPath: EagleLibrary.Path) {
+    public init(_ libraryPath: String) {
         self.libraryPath = libraryPath
     }
 }

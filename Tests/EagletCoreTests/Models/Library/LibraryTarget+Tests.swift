@@ -6,7 +6,7 @@
 //
 
 import CustomDump
-@testable import Eaglet1
+@testable import EagletCore
 import Foundation
 import Testing
 

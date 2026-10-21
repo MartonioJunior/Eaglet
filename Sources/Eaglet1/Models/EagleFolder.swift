@@ -5,6 +5,8 @@
 //  Created by Martônio Júnior on 14/04/25.
 //
 
+import EagletCore
+
 public enum EagleFolder {
     /// Type representing the folder's identifier.
     public typealias ID = String
