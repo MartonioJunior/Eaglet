@@ -5,18 +5,43 @@
 //  Created by Martônio Júnior on 21/10/2026.
 //
 
+public import Parsing
+public import URLRouting
+
 public extension EagleAPI {
     struct Pagination {
-        var offset: UInt
-        var limit: UInt
+        public var offset: UInt
+        public var limit: UInt
+    }
+
+    struct PaginatedResponse<T> {
+        public var data: T
+        public var total: UInt
+        public var offset: UInt
+        public var limit: UInt
+    }
+}
+
+// MARK: DotSyntax
+public extension EagleAPI.Pagination {
+    static var parser: AnyParserPrinter<URLRequestData, Self> {
+        Parse(.memberwise(Self.init)) {
+            Query {
+                Field("offset", default: UInt(0)) { UInt.parser() }
+                Field("limit", default: UInt(50)) { UInt.parser() }
+            }
+        }.eraseToAnyParserPrinter()
     }
 }
 
 // MARK: Self: Codable
 extension EagleAPI.Pagination: Codable {}
+extension EagleAPI.PaginatedResponse: Codable where T: Codable {}
 
 // MARK: Self: Equatable
 extension EagleAPI.Pagination: Equatable {}
+extension EagleAPI.PaginatedResponse: Equatable where T: Equatable {}
 
 // MARK: Self: Sendable
 extension EagleAPI.Pagination: Sendable {}
+extension EagleAPI.PaginatedResponse: Sendable where T: Sendable {}
