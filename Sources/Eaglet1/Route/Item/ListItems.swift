@@ -5,7 +5,7 @@
 //  Created by Martônio Júnior on 14/04/25.
 //
 
-public import EagletCore
+import EagletCore
 import Parsing
 public import URLRouting
 
