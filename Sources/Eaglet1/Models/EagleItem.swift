@@ -68,25 +68,8 @@ public struct EagleItem {
 // MARK: EagleItem.Color
 public extension EagleItem {
     /// Color in the palette of an Eagle item.
-    struct PaletteColor {
-        /// Color components.
-        var color: [UInt8]
-        /// Weight of the color in relation to the overall thumbnail.
-        var ratio: Double
-        var hashKey: String?
-    }
+    typealias PaletteColor = EaglePaletteColor
 }
-
-extension EagleItem.PaletteColor: Codable {
-    enum CodingKeys: String, CodingKey {
-        case color // swiftlint:disable:this explicit_enum_raw_value
-        case ratio // swiftlint:disable:this explicit_enum_raw_value
-        case hashKey = "$$hashKey"
-    }
-}
-
-extension EagleItem.PaletteColor: Equatable {}
-extension EagleItem.PaletteColor: Sendable {}
 
 // MARK: Self: Codable
 extension EagleItem: Codable {}
