@@ -33,7 +33,7 @@ public extension CreateFolder {
         var folders: [EagleFolder.ID]
         var modificationTime: UInt
         var imagesMappings: [String: String] // [String: Any]
-        var tags: [EagleTag]
+        var tags: [String]
         var children: [EagleFolder.ID]
         var isExpand: Bool
     }

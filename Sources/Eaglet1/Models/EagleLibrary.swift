@@ -44,7 +44,7 @@ public extension EagleLibrary {
         /// Last modification timestamp.
         var modificationTime: UInt
         /// Tag names.
-        var tags: [EagleTag]
+        var tags: [String]
         /// Icon associated with this folder.
         var icon: String?
         /// Tint color for the item.
@@ -195,7 +195,7 @@ public extension EagleLibrary {
         /// Name of the tag group.
         var name: String
         /// Tags associated with this tag group.
-        var tags: [EagleTag]
+        var tags: [String]
 
         var color: EagleColor?
     }

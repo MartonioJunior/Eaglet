@@ -25,9 +25,9 @@ public extension EagleFolder {
         var children: [Self]
         var modificationTime: UInt
         /// List of tags associated with a folder
-        var tags: [EagleTag]
+        var tags: [String]
         /// List of tags to extend.
-        var extendTags: [EagleTag]
+        var extendTags: [String]
         /// Icon for the folder.
         var icon: EagleIcon
         /// Color for the folder's icon.
@@ -50,7 +50,7 @@ public extension EagleFolder {
         let modificationTime: UInt
         let editable: Bool
         let imagesMappings: [String: String]
-        let tags: [EagleTag]
+        let tags: [String]
         let children: [Self]
         let isExpand: Bool
         let parent: String
@@ -68,7 +68,7 @@ public extension EagleFolder {
         let depth: Int
         let descendantImageCount: Int
         let pinyin: String
-        let extendTags: [EagleTag]
+        let extendTags: [String]
         let covers: [String]
 
         enum CodingKeys: String, CodingKey {
