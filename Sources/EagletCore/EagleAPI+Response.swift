@@ -10,11 +10,13 @@ public import URLRouting
 public extension EagleAPI {
     struct Response<T> {
         public let status: String
+        public let message: String?
         public let data: T
 
-        public init(_ data: T, status: String) {
+        public init(_ data: T, status: String, message: String? = nil) {
             self.data = data
             self.status = status
+            self.message = message
         }
     }
 
