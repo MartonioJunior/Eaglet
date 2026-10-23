@@ -22,9 +22,18 @@ public extension EagleAPI {
     }
 }
 
-// MARK: DotSyntax
-public extension EagleAPI.Pagination {
-    static var parser: AnyParserPrinter<URLRequestData, Self> {
+// MARK: Self: Codable
+extension EagleAPI.Pagination: Codable {}
+extension EagleAPI.PaginatedResponse: Codable where T: Codable {}
+
+// MARK: Self: Equatable
+extension EagleAPI.Pagination: Equatable {}
+extension EagleAPI.PaginatedResponse: Equatable where T: Equatable {}
+
+// MARK: Self: RequestGET
+extension EagleAPI.Pagination: EagleAPI.RequestGET {
+    // swiftlint:disable:next missing_docs
+    public static var parser: AnyParserPrinter<URLRequestData, Self> {
         Parse(.memberwise(Self.init)) {
             Query {
                 Field("offset", default: UInt(0)) { UInt.parser() }
@@ -33,14 +42,6 @@ public extension EagleAPI.Pagination {
         }.eraseToAnyParserPrinter()
     }
 }
-
-// MARK: Self: Codable
-extension EagleAPI.Pagination: Codable {}
-extension EagleAPI.PaginatedResponse: Codable where T: Codable {}
-
-// MARK: Self: Equatable
-extension EagleAPI.Pagination: Equatable {}
-extension EagleAPI.PaginatedResponse: Equatable where T: Equatable {}
 
 // MARK: Self: Sendable
 extension EagleAPI.Pagination: Sendable {}
