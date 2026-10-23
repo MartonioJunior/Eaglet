@@ -9,7 +9,12 @@ public import Parsing
 public import URLRouting
 
 public extension EagleAPI {
-    public protocol RequestGET {
+    protocol RequestGET {
         static var parser: AnyParserPrinter<URLRequestData, Self> { get }
+    }
+
+    protocol RequestGETPOST {
+        associatedtype GET: RequestGET, Codable
+        associatedtype POST: Codable
     }
 }
