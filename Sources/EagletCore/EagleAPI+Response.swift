@@ -32,7 +32,7 @@ public extension EagleAPI {
 // MARK: Self: Decodable
 extension EagleAPI.Response: Decodable where T: Decodable {}
 
-// MARK: Self: Equatable
+// MARK: Self: Encodable
 extension EagleAPI.Response: Encodable where T: Encodable {}
 
 // MARK: Self: Equatable
