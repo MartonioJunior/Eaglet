@@ -8,14 +8,14 @@
 public import EagletCore
 
 public struct UpdateComment {
-    var id: EagleID
-    var commentID: EagleID
-    var annotation: String?
-    var x: Double?
-    var y: Double?
-    var width: UInt?
-    var height: UInt?
-    var duration: UInt?
+    public var id: EagleID
+    public var commentID: EagleID
+    public var annotation: String?
+    public var x: Double?
+    public var y: Double?
+    public var width: UInt?
+    public var height: UInt?
+    public var duration: UInt?
 }
 
 // MARK: Self.Output

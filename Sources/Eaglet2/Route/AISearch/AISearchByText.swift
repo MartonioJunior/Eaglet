@@ -6,8 +6,8 @@
 //
 
 public struct AISearchByText {
-    var query: String
-    var options: [String: String]
+    public var query: String
+    public var options: [String: String]
 }
 
 // MARK: Self.Output

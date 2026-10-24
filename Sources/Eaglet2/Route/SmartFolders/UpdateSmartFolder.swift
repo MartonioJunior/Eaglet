@@ -8,34 +8,34 @@
 public import EagletCore
 
 public struct UpdateSmartFolder {
-    var id: EagleID
-    var name: String?
-    var conditions: [EagleSmartFolder.Condition]?
-    var description: String?
-    var iconColor: EagleColor?
-    var icon: EagleIcon?
+    public var id: EagleID
+    public var name: String?
+    public var conditions: [EagleSmartFolder.Condition]?
+    public var description: String?
+    public var iconColor: EagleColor?
+    public var icon: EagleIcon?
 }
 
 // MARK: Self.Output
 public extension UpdateSmartFolder {
     struct Output: Equatable, Sendable {
-        var id: String
-        var name: String
-        var conditions: [EagleSmartFolder.Condition]
-        var description: String
-        var icon: EagleIcon?
-        var iconColor: EagleColor
-        var children: [Self]
-        var modificationTime: UInt
-        var imageCount: UInt
-        var depth: UInt
-        var size: UInt
-        var vstype: String
-        var guidelines: [String]
-        var styles: EagleStyle
-        var index: UInt
-        var hashKey: String
-        var newFolderName: String
+        public var id: String
+        public var name: String
+        public var conditions: [EagleSmartFolder.Condition]
+        public var description: String
+        public var icon: EagleIcon?
+        public var iconColor: EagleColor
+        public var children: [Self]
+        public var modificationTime: UInt
+        public var imageCount: UInt
+        public var depth: UInt
+        public var size: UInt
+        public var vstype: String
+        public var guidelines: [String]
+        public var styles: EagleStyle
+        public var index: UInt
+        public var hashKey: String
+        public var newFolderName: String
     }
 }
 

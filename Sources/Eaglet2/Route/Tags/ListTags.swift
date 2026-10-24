@@ -11,11 +11,11 @@ public import URLRouting
 
 public struct ListTags {
     /// Fuzzy search by name
-    var name: String
+    public var name: String
     /// Pagination offset
-    var offset: UInt
+    public var offset: UInt
     /// Items per page (default 50, max 1000)
-    var limit: UInt
+    public var limit: UInt
 
     public init(
         name: String = "",

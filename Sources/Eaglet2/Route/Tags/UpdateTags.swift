@@ -9,9 +9,9 @@ public import EagletCore
 
 public struct UpdateTags {
     /// Original tag name
-    var originalName: String
+    public var originalName: String
     /// New tag name
-    var name: String
+    public var name: String
 }
 
 // MARK: Self.Output

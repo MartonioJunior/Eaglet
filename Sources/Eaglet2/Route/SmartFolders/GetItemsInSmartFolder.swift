@@ -10,32 +10,32 @@ public import Parsing
 public import URLRouting
 
 public struct GetItemsInSmartFolder {
-    var smartFolderId: EagleID
-    var orderBy: String?
-    var fields: [String]?
-    var offset: UInt
-    var limit: UInt
+    public var smartFolderId: EagleID
+    public var orderBy: String?
+    public var fields: [String]?
+    public var offset: UInt
+    public var limit: UInt
 }
 
 // MARK: Self.Output
 public extension GetItemsInSmartFolder {
     struct Output: Codable, Equatable, Sendable {
-        var id: EagleID
-        var name: String
-        var size: UInt
-        var btime: UInt
-        var mtime: UInt
-        var ext: String
-        var tags: [String]
-        var folders: [EagleID]
-        var isDeleted: Bool
-        var url: String
-        var annotation: String
-        var modificationTime: UInt
-        var width: UInt
-        var height: UInt
-        var lastModified: UInt
-        var palettes: [EaglePaletteColor]
+        public var id: EagleID
+        public var name: String
+        public var size: UInt
+        public var btime: UInt
+        public var mtime: UInt
+        public var ext: String
+        public var tags: [String]
+        public var folders: [EagleID]
+        public var isDeleted: Bool
+        public var url: String
+        public var annotation: String
+        public var modificationTime: UInt
+        public var width: UInt
+        public var height: UInt
+        public var lastModified: UInt
+        public var palettes: [EaglePaletteColor]
     }
 }
 

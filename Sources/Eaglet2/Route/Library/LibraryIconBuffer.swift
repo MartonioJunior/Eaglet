@@ -6,8 +6,8 @@
 //
 
 public struct LibraryIconBuffer {
-    var type: String
-    var data: [UInt8]
+    public var type: String
+    public var data: [UInt8]
 }
 
 // MARK: Self: Codable

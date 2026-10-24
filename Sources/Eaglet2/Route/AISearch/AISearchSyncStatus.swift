@@ -6,10 +6,10 @@
 //
 
 public struct AISearchSyncStatus {
-    var isSyncing: Bool
-    var syncedCount: UInt
-    var totalCount: UInt
-    var progress: Double
+    public var isSyncing: Bool
+    public var syncedCount: UInt
+    public var totalCount: UInt
+    public var progress: Double
 }
 
 // MARK: Self: Codable

@@ -9,7 +9,7 @@ public import EagletCore
 
 public struct RefreshThumbnail {
     /// Item ID
-    var itemId: EagleID
+    public var itemId: EagleID
 }
 
 // MARK: Self: Codable

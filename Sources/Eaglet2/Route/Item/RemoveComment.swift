@@ -8,8 +8,8 @@
 public import EagletCore
 
 public struct RemoveComment {
-    var id: EagleID
-    var commentID: EagleID
+    public var id: EagleID
+    public var commentID: EagleID
 }
 
 // MARK: Self.Output

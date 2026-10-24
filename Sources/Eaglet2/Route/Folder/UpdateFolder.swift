@@ -10,17 +10,17 @@ import EagletCore
 /// Data structure containing the necessary information to update info about a folder in an Eagle Library.
 public struct UpdateFolder {
     /// Folder's ID.
-    var id: String
+    public var id: String
     /// New name of the folder.
-    var name: String?
+    public var name: String?
     /// New description of the folder.
-    var description: String?
+    public var description: String?
 
-    var tags: [String]?
+    public var tags: [String]?
     /// New color for the folder.
-    var iconColor: EagleColor?
+    public var iconColor: EagleColor?
 
-    var parent: String?
+    public var parent: String?
 }
 
 // MARK: Self.Output

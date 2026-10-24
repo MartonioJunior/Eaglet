@@ -8,7 +8,7 @@
 public import EagletCore
 
 public struct RemoveSmartFolder {
-    var id: EagleID
+    public var id: EagleID
 }
 
 // MARK: Self: Codable

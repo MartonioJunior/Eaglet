@@ -8,25 +8,25 @@
 public import EagletCore
 
 public struct CreateSmartFolder {
-    var name: String
-    var conditions: [EagleSmartFolder.Condition]
-    var description: String?
-    var iconColor: EagleColor?
-    var parent: EagleID?
+    public var name: String
+    public var conditions: [EagleSmartFolder.Condition]
+    public var description: String?
+    public var iconColor: EagleColor?
+    public var parent: EagleID?
 }
 
 // MARK: Self.Output
 public extension CreateSmartFolder {
     struct Output: Codable, Equatable, Sendable {
-        var id: String
-        var name: String
-        var conditions: [EagleSmartFolder.Condition]
-        var description: String
-        var icon: EagleIcon?
-        var iconColor: EagleColor?
-        var children: [CreateSmartFolder.Output]
-        var modificationTime: UInt
-        var imageCount: UInt
+        public var id: String
+        public var name: String
+        public var conditions: [EagleSmartFolder.Condition]
+        public var description: String
+        public var icon: EagleIcon?
+        public var iconColor: EagleColor?
+        public var children: [CreateSmartFolder.Output]
+        public var modificationTime: UInt
+        public var imageCount: UInt
     }
 }
 

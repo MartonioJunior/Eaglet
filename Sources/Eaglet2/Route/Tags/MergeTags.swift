@@ -7,9 +7,9 @@
 
 public struct MergeTags {
     /// Source tag name (will be removed)
-    var source: String
+    public var source: String
     /// Target tag name (will be kept)
-    var target: String
+    public var target: String
 }
 
 // MARK: Self.Output

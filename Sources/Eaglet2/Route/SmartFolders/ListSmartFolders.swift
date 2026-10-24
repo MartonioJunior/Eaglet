@@ -14,9 +14,9 @@ public enum ListSmartFolders: EagleAPI.RequestGETPOST {}
 // MARK: Self.GET
 public extension ListSmartFolders {
     struct GET: Codable, Equatable, Sendable {
-        var id: EagleID?
-        var offset: UInt
-        var limit: UInt
+        public var id: EagleID?
+        public var offset: UInt
+        public var limit: UInt
     }
 }
 
@@ -38,9 +38,9 @@ extension ListSmartFolders.GET: EagleAPI.RequestGET {
 // MARK: Self.POST
 public extension ListSmartFolders {
     struct POST: Codable, Equatable, Sendable {
-        var id: EagleID?
-        var ids: [EagleID]?
-        var offset: UInt
-        var limit: UInt
+        public var id: EagleID?
+        public var ids: [EagleID]?
+        public var offset: UInt
+        public var limit: UInt
     }
 }

@@ -6,8 +6,8 @@
 //
 
 public struct AISearchByImage {
-    var base64: String
-    var options: [String: String]
+    public var base64: String
+    public var options: [String: String]
 }
 
 // MARK: Self.Output

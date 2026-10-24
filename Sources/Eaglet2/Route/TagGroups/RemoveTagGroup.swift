@@ -8,7 +8,7 @@
 public import EagletCore
 
 public struct RemoveTagGroup {
-    var id: EagleID
+    public var id: EagleID
 }
 
 // MARK: Self.Output

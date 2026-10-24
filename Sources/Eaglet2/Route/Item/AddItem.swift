@@ -9,27 +9,27 @@ public import EagletCore
 
 public struct AddItem {
     /// Image URL (at least one of: url, path, base64, bookmarkURL)
-    var url: String?
+    public var url: String?
     /// Local file path
-    var path: String?
+    public var path: String?
     /// Base64-encoded image data
-    var base64: String?
+    public var base64: String?
     /// Bookmark URL
-    var bookmarkURL: String?
+    public var bookmarkURL: String?
     /// Item name
-    var name: String?
+    public var name: String?
     /// Source website URL
-    var website: String?
+    public var website: String?
     /// Tags array
-    var tags: [String]?
+    public var tags: [String]?
     /// Annotation
-    var annotation: String?
+    public var annotation: String?
     /// Target folder IDs
-    var folders: [String]?
+    public var folders: [String]?
     /// Rating (0-5)
-    var star: UInt?
+    public var star: UInt?
     /// Batch mode: items array (max 1000)
-    var items: [String: String]?
+    public var items: [String: String]?
 }
 
 // MARK: Self.Output

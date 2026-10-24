@@ -9,13 +9,13 @@ public import EagletCore
 
 public struct AddComment {
     /// Item ID
-    var id: EagleID
-    var annotation: String
-    var x: Double
-    var y: Double
-    var width: UInt
-    var height: UInt
-    var duration: UInt
+    public var id: EagleID
+    public var annotation: String
+    public var x: Double
+    public var y: Double
+    public var width: UInt
+    public var height: UInt
+    public var duration: UInt
 }
 
 // MARK: Self: Codable

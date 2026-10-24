@@ -15,21 +15,21 @@ public enum ListItems: EagleAPI.RequestGETPOST {}
 public extension ListItems {
     struct GET: Codable, Equatable, Sendable {
         /// Item ID (returns a single item when specified)
-        var id: EagleID?
+        public var id: EagleID?
         /// Filter by file extension (e.g. png, jpg)
-        var ext: String?
+        public var ext: String?
         /// Filter by annotation
-        var annotation: String?
+        public var annotation: String?
         /// Filter by source URL
-        var url: String?
+        public var url: String?
         /// Filter by shape (square, landscape, portrait)
-        var shape: String?
+        public var shape: String?
         /// Filter by rating (0-5)
-        var rating: String?
+        public var rating: String?
         /// Pagination offset
-        var offset: UInt
+        public var offset: UInt
         /// Items per page (default 50, max 1000)
-        var limit: UInt
+        public var limit: UInt
     }
 }
 
@@ -54,22 +54,22 @@ extension ListItems.GET: EagleAPI.RequestGET {
 // MARK: Self.POST
 public extension ListItems {
     struct POST: Codable, Equatable, Sendable {
-        var id: EagleID?
-        var ids: [EagleID]?
-        var smartFolders: [EagleID]?
-        var tags: [String]?
-        var folders: [EagleID]?
-        var keywords: [String]?
-        var ext: String?
-        var annotation: String?
-        var url: String?
-        var shape: String?
-        var rating: UInt?
-        var isSelected: Bool?
-        var isUnfiled: Bool?
-        var isUntagged: Bool?
-        var fields: [String]?
-        var offset: UInt = 0
-        var limit: UInt = 50
+        public var id: EagleID?
+        public var ids: [EagleID]?
+        public var smartFolders: [EagleID]?
+        public var tags: [String]?
+        public var folders: [EagleID]?
+        public var keywords: [String]?
+        public var ext: String?
+        public var annotation: String?
+        public var url: String?
+        public var shape: String?
+        public var rating: UInt?
+        public var isSelected: Bool?
+        public var isUnfiled: Bool?
+        public var isUntagged: Bool?
+        public var fields: [String]?
+        public var offset: UInt = 0
+        public var limit: UInt = 50
     }
 }

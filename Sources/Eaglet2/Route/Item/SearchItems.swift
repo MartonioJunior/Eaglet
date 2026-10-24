@@ -6,7 +6,7 @@
 //
 
 public struct SearchItems {
-    var query: String
+    public var query: String
 }
 
 // MARK: Self: Codable

@@ -8,8 +8,8 @@
 public import EagletCore
 
 public struct AISearchByItemID {
-    var itemId: EagleID
-    var options: [String: String]
+    public var itemId: EagleID
+    public var options: [String: String]
 }
 
 // MARK: Self.Output

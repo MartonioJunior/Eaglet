@@ -11,16 +11,16 @@ public import URLRouting
 
 public struct ListFolders {
     /// Folder ID (get specific folder)
-    var id: EagleID?
-    var ids: [EagleID]?
+    public var id: EagleID?
+    public var ids: [EagleID]?
     /// Get recently used folders
-    var isRecent: Bool
+    public var isRecent: Bool
     /// Get currently selected folders
-    var isSelected: Bool
+    public var isSelected: Bool
     /// Pagination offset
-    var offset: UInt
+    public var offset: UInt
     /// Items per page (default 50, max 1000)
-    var limit: UInt
+    public var limit: UInt
 
     public init(
         id: EagleID? = nil,

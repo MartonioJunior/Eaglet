@@ -8,18 +8,18 @@
 public import EagletCore
 
 public struct CreateTagGroup {
-    var name: String
-    var tags: [String]?
-    var color: EagleColor?
-    var description: String?
+    public var name: String
+    public var tags: [String]?
+    public var color: EagleColor?
+    public var description: String?
 }
 
 // MARK: Self.Output
 public extension CreateTagGroup {
     struct Output: Codable, Equatable, Sendable {
-        var id: EagleID
-        var name: String
-        var tags: [String]
+        public var id: EagleID
+        public var name: String
+        public var tags: [String]
     }
 }
 

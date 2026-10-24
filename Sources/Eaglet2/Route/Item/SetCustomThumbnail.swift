@@ -6,10 +6,10 @@
 //
 
 public struct SetCustomThumbnail {
-    var itemId: String
-    var filePath: String
-    var width: UInt
-    var height: UInt
+    public var itemId: String
+    public var filePath: String
+    public var width: UInt
+    public var height: UInt
 }
 
 // MARK: Self: Codable

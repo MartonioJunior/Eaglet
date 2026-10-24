@@ -8,9 +8,9 @@
 public import EagletCore
 
 public struct AddTagsToTagGroup {
-    var groupId: EagleID
-    var tags: [String]
-    var removeFromSource: Bool
+    public var groupId: EagleID
+    public var tags: [String]
+    public var removeFromSource: Bool
 }
 
 // MARK: Self.Output

@@ -6,7 +6,7 @@
 //
 
 public struct AISearchServiceHealth {
-    var healthy: Bool
+    public var healthy: Bool
 }
 
 // MARK: Self: Codable

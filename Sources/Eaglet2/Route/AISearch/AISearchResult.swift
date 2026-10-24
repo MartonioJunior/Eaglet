@@ -8,20 +8,20 @@
 public import EagletCore
 
 public struct AISearchResult {
-    var item: Item
-    var score: Double
+    public var item: Item
+    public var score: Double
 }
 
 // MARK: Self.Item
 public extension AISearchResult {
     struct Item: Codable, Equatable, Sendable {
-        var id: EagleID
-        var name: String
-        var ext: String
-        var width: UInt
-        var height: UInt
-        var tags: [String]
-        var star: UInt
+        public var id: EagleID
+        public var name: String
+        public var ext: String
+        public var width: UInt
+        public var height: UInt
+        public var tags: [String]
+        public var star: UInt
     }
 }
 

@@ -10,7 +10,7 @@ public import Parsing
 public import URLRouting
 
 public struct FetchComments {
-    var id: EagleID
+    public var id: EagleID
 }
 
 // MARK: Self.Output
