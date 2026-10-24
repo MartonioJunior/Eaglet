@@ -25,7 +25,7 @@ struct UpdateFolderTests {
                 id: "KMUFMKTBHINM4",
                 newName: "New Name",
                 newDescription: "New Description",
-                newColor: "red"
+                newColor: .init(rawValue: "red")
             )
         ),
         (
@@ -40,7 +40,7 @@ struct UpdateFolderTests {
                 id: "KMUFMKTBHINM4",
                 newName: nil,
                 newDescription: "New Description",
-                newColor: "red"
+                newColor: .init(rawValue: "red")
             )
         ),
         (
@@ -55,7 +55,7 @@ struct UpdateFolderTests {
                 id: "KMUFMKTBHINM4",
                 newName: "New Name",
                 newDescription: nil,
-                newColor: "red"
+                newColor: .init(rawValue: "red")
             )
         ),
         (

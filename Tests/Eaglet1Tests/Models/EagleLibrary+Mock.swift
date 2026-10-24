@@ -23,7 +23,7 @@ public extension EagleLibrary {
                             children: [],
                             modificationTime: 1487586529221,
                             tags: [],
-                            iconColor: "orange",
+                            iconColor: .init(rawValue: "orange"),
                             password: "",
                             passwordTips: "",
                             coverId: "850b5be2-73be-5ab5-d96b-d16d1c4baef4",
@@ -33,7 +33,7 @@ public extension EagleLibrary {
                     ],
                     modificationTime: 1487586362385,
                     tags: [],
-                    iconColor: "red",
+                    iconColor: .init(rawValue: "red"),
                     password: "",
                     passwordTips: "",
                     coverId: "a387c5d6-5c27-4f1e-96d1-af7ae0256887",
@@ -47,7 +47,7 @@ public extension EagleLibrary {
                     children: [],
                     modificationTime: 1494390324202,
                     tags: ["Business Card"],
-                    iconColor: "yellow",
+                    iconColor: .init(rawValue: "yellow"),
                     password: "",
                     passwordTips: "",
                     coverId: "9948622c-1734-cd31-cf64-af5284675b29"
@@ -63,7 +63,7 @@ public extension EagleLibrary {
                         "Loft",
                         "Interior"
                     ],
-                    iconColor: "green",
+                    iconColor: .init(rawValue: "green"),
                     password: "",
                     passwordTips: "",
                     coverId: "d18dad7d-6904-5e4d-1481-9335d675e66b",
@@ -80,7 +80,7 @@ public extension EagleLibrary {
                         "Urban Art",
                         "Street Art"
                     ],
-                    iconColor: "aqua",
+                    iconColor: .init(rawValue: "aqua"),
                     password: "",
                     passwordTips: ""
                 ),
@@ -91,7 +91,7 @@ public extension EagleLibrary {
                     children: [],
                     modificationTime: 1494394412374,
                     tags: [],
-                    iconColor: "blue",
+                    iconColor: .init(rawValue: "blue"),
                     password: "",
                     passwordTips: "",
                     coverId: "7cb9cf92-55e2-d94e-bbcd-e51471abace3"
@@ -103,7 +103,7 @@ public extension EagleLibrary {
                     children: [],
                     modificationTime: 1494395202363,
                     tags: [],
-                    iconColor: "purple",
+                    iconColor: .init(rawValue: "purple"),
                     password: "",
                     passwordTips: "",
                     coverId: "8acdd268-f7e8-26c0-d514-7bf85e11b2d3",
@@ -117,7 +117,7 @@ public extension EagleLibrary {
                     children: [],
                     modificationTime: 1538196878863,
                     tags: [],
-                    iconColor: "pink",
+                    iconColor: .init(rawValue: "pink"),
                     password: "",
                     passwordTips: "",
                     orderBy: "MANUAL",
@@ -343,7 +343,7 @@ public extension EagleLibrary {
                     id: "c549d2a8-c187-c612-617f-83fcef4976a2",
                     name: "Location",
                     tags: ["Kitchen"],
-                    color: "yellow"
+                    color: .init(rawValue: "yellow")
                 ),
                 Self.TagGroups(
                     id: "549c0c05-414f-b114-4832-578e77d937ab",
@@ -357,7 +357,7 @@ public extension EagleLibrary {
                         "Ant-Man",
                         "Missing Tags"
                     ],
-                    color: "red"
+                    color: .init(rawValue: "red")
                 ),
                 Self.TagGroups(
                     id: "1293781293891211321",

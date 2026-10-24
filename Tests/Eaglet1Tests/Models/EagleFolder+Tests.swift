@@ -28,7 +28,7 @@ struct EagleFolderTests {
                         tags: [],
                         extendTags: [],
                         icon: "grid",
-                        iconColor: "orange",
+                        iconColor: .init(rawValue: "orange")!,
                         pinyin: "No Outline",
                         password: "",
                         passwordTips: ""
@@ -38,7 +38,7 @@ struct EagleFolderTests {
                 tags: [],
                 extendTags: [],
                 icon: "like",
-                iconColor: "red",
+                iconColor: .init(rawValue: "red")!,
                 pinyin: "Glyphs",
                 password: "",
                 passwordTips: ""

@@ -41,7 +41,7 @@ struct EagleLibraryTagGroupsTests {
                     "Ant-Man",
                     "Missing Tags"
                 ],
-                color: "red"
+                color: .init(rawValue: "red")
             )
         )
     ])

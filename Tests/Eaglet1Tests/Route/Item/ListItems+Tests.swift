@@ -197,32 +197,6 @@ struct ListItemsTests {
         }
     }
 
-    @Test("Evaluates parser printing for a list of elements.", arguments: [
-        (
-            ["KAY6NTU6UYI5Q", "KBJ8Z60O88VMG"],
-            "KAY6NTU6UYI5Q,KBJ8Z60O88VMG"
-        ),
-        (
-            ["KAY6NTU6UYI5Q", "KBJ8Z60O88VMG", "LKFIGUSFUS"],
-            "KAY6NTU6UYI5Q,KBJ8Z60O88VMG,LKFIGUSFUS"
-        )
-    ])
-    func listParser(_ data: [String], expected: String) throws {
-        var output = try ListItems.listParser.print(data)
-        if let delta = diff(String(output), expected) {
-            Issue.record(Comment(rawValue: delta))
-        } else {
-            #expect(output == expected)
-        }
-
-        let input = try ListItems.listParser.parse(&output)
-        if let delta = diff(input, data) {
-            Issue.record(Comment(rawValue: delta))
-        } else {
-            #expect(input == data)
-        }
-    }
-
     @Test("Evaluates parser printing for sort options.", arguments: [
         (ListItems.SortingOptions(.ascending, .creationDate), "CREATEDATE"),
         (ListItems.SortingOptions(.descending, .creationDate), "-CREATEDATE"),

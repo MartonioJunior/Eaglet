@@ -63,7 +63,7 @@ struct EagleRouteV1FolderTests {
                 tags: [],
                 extendTags: [],
                 icon: "grid",
-                iconColor: "red",
+                iconColor: .init(rawValue: "red")!,
                 pinyin: "First Folder",
                 password: "",
                 passwordTips: ""
@@ -77,7 +77,7 @@ struct EagleRouteV1FolderTests {
                 tags: [],
                 extendTags: [],
                 icon: "plane",
-                iconColor: "yellow",
+                iconColor: .init(rawValue: "yellow")!,
                 pinyin: "Second Folder",
                 password: "1234",
                 passwordTips: "Simple password"
@@ -228,7 +228,7 @@ struct EagleRouteV1FolderTests {
                 id: "KBJJSMMVF9WYL",
                 newName: "Lollipop",
                 newDescription: "Wow!",
-                newColor: "orange"
+                newColor: .init(rawValue: "orange")
             ),
             UpdateFolder.Output(
                 id: "KBJJSMMVF9WYL",
@@ -253,7 +253,7 @@ struct EagleRouteV1FolderTests {
             UpdateFolder(
                 id: "KBJJSMMVF9WYL",
                 newDescription: "Wow!",
-                newColor: "orange"
+                newColor: .init(rawValue: "orange")
             ),
             UpdateFolder.Output(
                 id: "KBJJSMMVF9WYL",
@@ -278,7 +278,7 @@ struct EagleRouteV1FolderTests {
             UpdateFolder(
                 id: "KBJJSMMVF9WYL",
                 newName: "Lollipop",
-                newColor: "orange"
+                newColor: .init(rawValue: "orange")
             ),
             UpdateFolder.Output(
                 id: "KBJJSMMVF9WYL",

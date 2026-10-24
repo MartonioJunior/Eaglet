@@ -41,7 +41,7 @@ struct EagleRouteV1Tests {
                         id: "KBJJSMMVF9WYL",
                         newName: "New Folder",
                         newDescription: "Cool Description",
-                        newColor: "red"
+                        newColor: .init(rawValue: "red")
                     )
                 )),
                 URLRequestData.post(
@@ -51,7 +51,7 @@ struct EagleRouteV1Tests {
                             id: "KBJJSMMVF9WYL",
                             newName: "New Folder",
                             newDescription: "Cool Description",
-                            newColor: "red"
+                            newColor: .init(rawValue: "red")
                         )
                         return try? JSONEncoder().encode(body)
                     }()
