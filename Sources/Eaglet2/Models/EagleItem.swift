@@ -8,25 +8,25 @@
 public import EagletCore
 
 public struct EagleItem {
-    var id: EagleID
-    var name: String
-    var size: UInt
-    var btime: UInt
-    var mtime: UInt?
-    var ext: String
-    var tags: [String]
-    var folders: [EagleID]
-    var isDeleted: Bool
-    var url: String
-    var annotation: String
-    var modificationTime: UInt
-    var width: UInt
-    var height: UInt
-    var videoID: EagleID?
-    var medium: String?
-    var duration: StringBacked<UInt>?
-    var lastModified: UInt
-    var palettes: [EaglePaletteColor]
+    public var id: EagleID
+    public var name: String
+    public var size: UInt
+    public var btime: UInt
+    public var mtime: UInt?
+    public var ext: String
+    public var tags: [String]
+    public var folders: [EagleID]
+    public var isDeleted: Bool
+    public var url: String
+    public var annotation: String
+    public var modificationTime: UInt
+    public var width: UInt
+    public var height: UInt
+    public var videoID: EagleID?
+    public var medium: String?
+    public var duration: StringBacked<UInt>?
+    public var lastModified: UInt
+    public var palettes: [EaglePaletteColor]
 
     public init(
         id: EagleID,
@@ -65,6 +65,7 @@ public struct EagleItem {
         self.height = height
         self.videoID = videoID
         self.medium = medium
+        self.duration = nil
         if let duration {
             self.duration = StringBacked(duration)
         }

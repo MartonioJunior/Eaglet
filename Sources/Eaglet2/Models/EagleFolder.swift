@@ -8,35 +8,35 @@
 public import EagletCore
 
 public struct EagleFolder {
-    let id: String
-    let name: String
-    let description: String
-    let children: [Self]
-    let modificationTime: UInt
-    let tags: [String]
-    let icon: String
-    let iconColor: String?
-    let password: String
-    let passwordTips: String
-    let orderBy: String?
-    let sortIncrease: Bool?
-    let images: [EagleID]
-    let isExpand: Bool
-    let size: UInt
-    let vstype: String
-    let guidelines: [String]
-    let styles: EagleStyle
-    let isVisible: Bool
-    let index: Int
-    let hashKey: String
-    let newFolderName: String
-    let imagesMappings: [String: String]
-    let imageCount: Int
-    let depth: Int
-    let descendantImageCount: Int
-    let pinyin: String
-    let extendTags: [String]
-    let covers: [String]
+    public let id: String
+    public let name: String
+    public let description: String
+    public let children: [Self]
+    public let modificationTime: UInt
+    public let tags: [String]
+    public let icon: String
+    public let iconColor: String?
+    public let password: String
+    public let passwordTips: String
+    public let orderBy: String?
+    public let sortIncrease: Bool?
+    public let images: [EagleID]
+    public let isExpand: Bool
+    public let size: UInt
+    public let vstype: String
+    public let guidelines: [String]
+    public let styles: EagleStyle
+    public let isVisible: Bool
+    public let index: Int
+    public let hashKey: String
+    public let newFolderName: String
+    public let imagesMappings: [String: String]
+    public let imageCount: Int
+    public let depth: Int
+    public let descendantImageCount: Int
+    public let pinyin: String
+    public let extendTags: [String]
+    public let covers: [String]
 
     public init(
         id: String,

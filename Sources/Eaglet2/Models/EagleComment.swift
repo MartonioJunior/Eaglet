@@ -8,14 +8,14 @@
 public import EagletCore
 
 public struct EagleComment {
-    var id: EagleID
-    var x: Double
-    var y: Double
-    var width: UInt
-    var height: UInt
-    var duration: UInt?
-    var annotation: String
-    var lastModified: UInt
+    public let id: EagleID
+    public let x: Double
+    public let y: Double
+    public let width: UInt
+    public let height: UInt
+    public let duration: UInt?
+    public let annotation: String
+    public let lastModified: UInt
 }
 
 // MARK: Self: Codable

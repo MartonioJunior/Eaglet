@@ -14,21 +14,21 @@ public struct EagleLibrary {
     /// Type representing the version of the app.
     public typealias Version = String
     /// Library display name.
-    var name: String
+    public let name: String
     /// Full path to the library directory.
-    var path: String
+    public let path: String
     /// Last modification timestamp.
-    var modificationTime: UInt
+    public let modificationTime: UInt
     /// Eagle version that created this library.
-    var applicationVersion: Version
+    public let applicationVersion: Version
     /// Top-level folder structure.
-    var folders: [Folder]
+    public let folders: [Folder]
     /// Smart folder configurations.
-    var smartFolders: [SmartFolder]
+    public let smartFolders: [SmartFolder]
     /// Quick access items.
-    var quickAccess: [QuickAccess]
+    public let quickAccess: [QuickAccess]
     /// Tag group definitions.
-    var tagsGroups: [TagGroups]
+    public let tagsGroups: [TagGroups]
 }
 
 // MARK: EagleLibrary.Folder
@@ -36,29 +36,29 @@ public extension EagleLibrary {
     /// Data structure representing an Eagle Folder in the context of the library.
     struct Folder {
         /// Unique folder ID.
-        var id: String
+        public var id: String
         /// Name of the folder.
-        var name: String
+        public var name: String
         /// Folder description.
-        var description: String
+        public var description: String
         /// Children folders.
-        var children: [EagleLibrary.Folder]
+        public var children: [EagleLibrary.Folder]
         /// Last modification timestamp.
-        var modificationTime: UInt
+        public var modificationTime: UInt
         /// Tag names.
-        var tags: [String]
+        public var tags: [String]
         /// Icon associated with this folder.
-        var icon: String?
+        public var icon: String?
         /// Tint color for the item.
-        var iconColor: EagleColor?
+        public var iconColor: EagleColor?
         /// Password of the item.
-        var password: String
+        public var password: String
         /// Password tips for the password-locked item.
-        var passwordTips: String
+        public var passwordTips: String
 
-        var orderBy: String?
+        public var orderBy: String?
 
-        var sortIncrease: Bool?
+        public var sortIncrease: Bool?
 
         public init(
             id: String,
@@ -98,8 +98,8 @@ extension EagleLibrary.Folder: Sendable {}
 public extension EagleLibrary {
     /// Type representing a quick access item.
     struct QuickAccess {
-        var type: String
-        var id: String
+        public var type: String
+        public var id: String
     }
 }
 
@@ -111,27 +111,27 @@ extension EagleLibrary.QuickAccess: Sendable {}
 public extension EagleLibrary {
     /// Type representing a smart folder.
     struct SmartFolder {
-        var id: String
-        var icon: EagleIcon?
-        var iconColor: EagleColor
-        var name: String
-        var description: String?
-        var modificationTime: UInt
-        var conditions: [Condition]
-        var children: [EagleLibrary.SmartFolder]
-        var orderBy: String?
-        var sortIncrease: Bool?
-        var isExpand: Bool?
-        var depth: UInt?
-        var size: UInt?
-        var vstype: String?
-        var guidelines: [String]?
-        var styles: EagleStyle?
-        var isVisible: Bool?
-        var index: UInt?
-        var imageCount: UInt?
-        var pinyin: String?
-        var parent: String?
+        public var id: String
+        public var icon: EagleIcon?
+        public var iconColor: EagleColor
+        public var name: String
+        public var description: String?
+        public var modificationTime: UInt
+        public var conditions: [Condition]
+        public var children: [EagleLibrary.SmartFolder]
+        public var orderBy: String?
+        public var sortIncrease: Bool?
+        public var isExpand: Bool?
+        public var depth: UInt?
+        public var size: UInt?
+        public var vstype: String?
+        public var guidelines: [String]?
+        public var styles: EagleStyle?
+        public var isVisible: Bool?
+        public var index: UInt?
+        public var imageCount: UInt?
+        public var pinyin: String?
+        public var parent: String?
 
         public init(
             id: String,
@@ -187,10 +187,10 @@ extension EagleLibrary.SmartFolder: Sendable {}
 
 public extension EagleLibrary.SmartFolder {
     struct Condition {
-        var hashKey: String?
-        var match: String
-        var boolean: StringBacked<Bool>
-        var rules: [Rule]
+        public var hashKey: String?
+        public var match: String
+        public var boolean: StringBacked<Bool>
+        public var rules: [Rule]
 
         public init(
             hashKey: String?,
@@ -240,10 +240,10 @@ extension EagleLibrary.SmartFolder.Condition: Sendable {}
 
 public extension EagleLibrary.SmartFolder.Condition {
     struct Rule {
-        var hashKey: String?
-        var method: String
-        var property: String
-        nonisolated(unsafe) var value: AnyEagleValue
+        public var hashKey: String?
+        public var method: String
+        public var property: String
+        nonisolated(unsafe) public var value: AnyEagleValue
 
         public init(
             hashKey: String?,
@@ -299,15 +299,15 @@ public extension EagleLibrary {
     /// Data structure representing the model for tag groups.
     struct TagGroups {
         /// ID of the tag group.
-        var id: String
+        public var id: String
         /// Name of the tag group.
-        var name: String
+        public var name: String
         /// Tags associated with this tag group.
-        var tags: [String]
+        public var tags: [String]
 
-        var color: EagleColor?
+        public var color: EagleColor?
 
-        var description: String?
+        public var description: String?
     }
 }
 
