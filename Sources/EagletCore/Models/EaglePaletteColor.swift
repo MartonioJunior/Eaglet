@@ -12,6 +12,16 @@ public struct EaglePaletteColor {
     /// Weight of the color in relation to the overall thumbnail.
     var ratio: Double
     var hashKey: String?
+
+    public init(
+        color: [UInt8],
+        ratio: Double,
+        hashKey: String? = nil
+    ) {
+        self.color = color
+        self.ratio = ratio
+        self.hashKey = hashKey
+    }
 }
 
 // MARK: Self: Codable
