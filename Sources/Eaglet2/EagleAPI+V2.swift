@@ -1,0 +1,42 @@
+//
+//  EagleAPI2.swift
+//  Eaglet
+//
+//  Created by Martônio Júnior on 07/10/2026.
+//
+
+public import APIUtils
+import CommunicationMacros
+public import EagletCore
+import Foundation
+import URLRouting
+
+public extension EagleAPI {
+    /// Legacy version of Eagle's Web API.
+    /// 
+    /// The Eagle API server will start up when Eagle App is opened,
+    /// hence you'd have to open Eagle App first to gain access to all function of Eagle API.
+    /// 
+    /// All API server will start-up upon opening Eagle App, the default listening port is 41595,
+    /// i.e. http://localhost:41595/api/v2/ . Results returned will be in JSON format.
+    /// 
+    /// Eagle 1.11 Build21 (Released on 2020/06/17) or later is required to gain access to this version of the API.
+    enum V2 {
+        public static func decodedRequest<T: Decodable>(
+            _ route: EagleRouteV2,
+            as type: T.Type = T.self,
+        ) async throws -> T {
+            try await decodedRequest(route, as: type, client: .eagle(Self.self))
+        }
+    }
+}
+
+// MARK: Self: EagleAPI.Client
+extension EagleAPI.V2: EagleAPI.Client {
+    // swiftlint:disable:next missing_docs
+    public typealias Route = EagleRouteV2
+    // swiftlint:disable:next missing_docs
+    public static var live: EntryPoint {
+        .init(#staticURL("http://localhost:41595/api/v2/"))
+    }
+}
