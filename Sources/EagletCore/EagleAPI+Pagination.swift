@@ -12,6 +12,14 @@ public extension EagleAPI {
     struct Pagination {
         public var offset: UInt
         public var limit: UInt
+
+        public init(
+            offset: UInt,
+            limit: UInt
+        ) {
+            self.offset = offset
+            self.limit = limit
+        }
     }
 
     struct PaginatedResponse<T> {
@@ -19,6 +27,18 @@ public extension EagleAPI {
         public var total: UInt
         public var offset: UInt
         public var limit: UInt
+
+        public init(
+            data: T,
+            total: UInt,
+            offset: UInt,
+            limit: UInt,
+        ) {
+            self.data = data
+            self.total = total
+            self.offset = offset
+            self.limit = limit
+        }
     }
 }
 
