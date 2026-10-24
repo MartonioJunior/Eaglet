@@ -9,19 +9,19 @@ public import EagletCore
 
 public struct UpdateItem {
     var id: EagleID
-    var name: String
-    var annotation: String
-    var url: String
-    var tags: [String]
-    var folders: [EagleID]
-    var star: UInt
-    var ext: String
-    var width: UInt
-    var height: UInt
-    var noThumbnail: Bool
-    var noPreview: Bool
-    var isDeleted: Bool
-    var modificationTime: UInt
+    var name: String?
+    var annotation: String?
+    var url: String?
+    var tags: [String]?
+    var folders: [EagleID]?
+    var star: UInt?
+    var ext: String?
+    var width: UInt?
+    var height: UInt?
+    var noThumbnail: Bool?
+    var noPreview: Bool?
+    var isDeleted: Bool?
+    var modificationTime: UInt?
 }
 
 // MARK: Self.Output

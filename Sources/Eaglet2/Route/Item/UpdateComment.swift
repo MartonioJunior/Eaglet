@@ -10,12 +10,12 @@ public import EagletCore
 public struct UpdateComment {
     var id: EagleID
     var commentID: EagleID
-    var annotation: String
-    var x: Double
-    var y: Double
-    var width: UInt
-    var height: UInt
-    var duration: UInt
+    var annotation: String?
+    var x: Double?
+    var y: Double?
+    var width: UInt?
+    var height: UInt?
+    var duration: UInt?
 }
 
 // MARK: Self.Output

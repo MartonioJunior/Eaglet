@@ -54,22 +54,22 @@ extension ListItems.GET: EagleAPI.RequestGET {
 // MARK: Self.POST
 public extension ListItems {
     struct POST: Codable, Equatable, Sendable {
-        var id: EagleID
-        var ids: [EagleID]
-        var smartFolders: [EagleID]
-        var tags: [String]
-        var folders: [EagleID]
-        var keywords: [String]
-        var ext: String
-        var annotation: String
-        var url: String
-        var shape: String
-        var rating: UInt
-        var isSelected: Bool
-        var isUnfiled: Bool
-        var isUntagged: Bool
-        var fields: [String]
-        var offset: UInt
-        var pagination: UInt
+        var id: EagleID?
+        var ids: [EagleID]?
+        var smartFolders: [EagleID]?
+        var tags: [String]?
+        var folders: [EagleID]?
+        var keywords: [String]?
+        var ext: String?
+        var annotation: String?
+        var url: String?
+        var shape: String?
+        var rating: UInt?
+        var isSelected: Bool?
+        var isUnfiled: Bool?
+        var isUntagged: Bool?
+        var fields: [String]?
+        var offset: UInt = 0
+        var limit: UInt = 50
     }
 }
