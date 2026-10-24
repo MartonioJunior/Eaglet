@@ -1,0 +1,32 @@
+//
+//  EagleRouteV2+Application.swift
+//  Eaglet
+//
+//  Created by Martônio Júnior on 21/10/2026.
+//
+
+public import CasePaths
+public import EagletCore
+public import URLRouting
+
+public extension EagleRouteV2 {
+    /// Route related to the Eagle application itself.
+    @CasePathable
+    enum Application {
+        /// `Get` Obtains detailed information on the Eagle App currently running (version, platform, etc.).
+        /// 
+        /// In most cases, this could be used to determine whether certain functions are available on the user's device.
+        case info
+    }
+}
+
+// MARK: Self: Sendable
+extension EagleRouteV2.Application: Sendable {}
+
+// MARK: URLRoutingClient (EX)
+public extension URLRoutingClient where Route == EagleAPI.V2.Route {
+    @concurrent
+    func getAppInfo() async throws -> EagleAppInfo {
+        try await decodedResponse(for: .application(.info), as: EagleAppInfo.self).value
+    }
+}
