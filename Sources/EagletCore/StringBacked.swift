@@ -50,3 +50,14 @@ extension StringBacked: Hashable where Value: Hashable {}
 
 // MARK: Self: Sendable
 extension StringBacked: Sendable where Value: Sendable {}
+
+// MARK: Self.Value == Bool
+public extension StringBacked where Value == Bool {
+    static func bool(_ text: String) -> Self {
+        switch text.lowercased() {
+            case "true": .init(true)
+            case "false": .init(false)
+            default: .init(false)
+        }
+    }
+}
