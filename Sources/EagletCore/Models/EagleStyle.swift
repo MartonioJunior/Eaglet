@@ -9,6 +9,16 @@ public struct EagleStyle {
     public var depth: Int
     public var first: Bool
     public var last: Bool
+
+    public init(
+        depth: Int,
+        first: Bool,
+        last: Bool
+    ) {
+        self.depth = depth
+        self.first = first
+        self.last = last
+    }
 }
 
 // MARK: Self: Decodable
