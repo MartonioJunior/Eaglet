@@ -8,12 +8,12 @@
 public import EagletCore
 
 public struct EagleTagGroup {
-    var id: EagleID
-    var name: String
-    var tags: [String]
-    var hashKey: String
-    var color: EagleColor?
-    var description: String?
+    public var id: EagleID
+    public var name: String
+    public var tags: [String]
+    public var hashKey: String
+    public var color: EagleColor?
+    public var description: String?
 }
 
 // MARK: Self: Codable
