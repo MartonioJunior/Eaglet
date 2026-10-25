@@ -30,6 +30,26 @@ public extension ListItems {
         public var offset: UInt
         /// Items per page (default 50, max 1000)
         public var limit: UInt
+
+        public init(
+            id: EagleID? = nil,
+            ext: String? = nil,
+            annotation: String? = nil,
+            url: String? = nil,
+            shape: String? = nil,
+            rating: String? = nil,
+            offset: UInt,
+            limit: UInt
+        ) {
+            self.id = id
+            self.ext = ext
+            self.annotation = annotation
+            self.url = url
+            self.shape = shape
+            self.rating = rating
+            self.offset = offset
+            self.limit = limit
+        }
     }
 }
 
@@ -71,5 +91,43 @@ public extension ListItems {
         public var fields: [String]?
         public var offset: UInt = 0
         public var limit: UInt = 50
+
+        public init(
+            id: EagleID?,
+            ids: [EagleID]?,
+            smartFolders: [EagleID]?,
+            tags: [String]?,
+            folders: [EagleID]?,
+            keywords: [String]?,
+            ext: String?,
+            annotation: String?,
+            url: String?,
+            shape: String?,
+            rating: UInt?,
+            isSelected: Bool?,
+            isUnfiled: Bool?,
+            isUntagged: Bool?,
+            fields: [String]?,
+            offset: UInt = 0,
+            limit: UInt = 50
+        ) {
+            self.id = id
+            self.ids = ids
+            self.smartFolders = smartFolders
+            self.tags = tags
+            self.folders = folders
+            self.keywords = keywords
+            self.ext = ext
+            self.annotation = annotation
+            self.url = url
+            self.shape = shape
+            self.rating = rating
+            self.isSelected = isSelected
+            self.isUnfiled = isUnfiled
+            self.isUntagged = isUntagged
+            self.fields = fields
+            self.offset = offset
+            self.limit = limit
+        }
     }
 }
