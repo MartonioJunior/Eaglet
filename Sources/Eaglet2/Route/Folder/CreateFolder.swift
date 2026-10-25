@@ -5,7 +5,7 @@
 //  Created by Martônio Júnior on 21/10/2026.
 //
 
-import EagletCore
+public import EagletCore
 
 /// Data structure containing the necessary information to create a folder in an Eagle Library.
 public struct CreateFolder {
